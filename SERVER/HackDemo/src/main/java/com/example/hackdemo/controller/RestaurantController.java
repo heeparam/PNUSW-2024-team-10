@@ -1,46 +1,71 @@
 package com.example.hackdemo.controller;
 
-
-import com.example.hackdemo.entity.District;
-import com.example.hackdemo.entity.Restaurant;
-import com.example.hackdemo.enumeration.RestaurantTagType;
+import com.example.hackdemo.model.Favorite;
+import com.example.hackdemo.model.Restaurant;
 import com.example.hackdemo.service.RestaurantService;
-import lombok.RequiredArgsConstructor;
+import com.example.hackdemo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/restaurants")
-@RequiredArgsConstructor
+@RequestMapping("/api/restaurant")
 public class RestaurantController {
-    private final RestaurantService restaurantService;
-
+    @Autowired
+    private RestaurantService restaurantService;
+    @Autowired
+    private UserService userService;
     @GetMapping
-    public ResponseEntity<List<Restaurant>> getAllRestaurants() {
-        return ResponseEntity.ok(restaurantService.getAllRestaurants());
+    public List<Restaurant> getAllRestaurants() {
+        return restaurantService.getAllRestaurants();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Restaurant> getRestaurantById(@PathVariable Long id) {
-        return ResponseEntity.ok(restaurantService.getRestaurantById(id));
+    public Restaurant getRestaurantById(@PathVariable Long id) {
+        return restaurantService.getRestaurantById(id);
     }
 
-    @GetMapping("/district/{districtId}")
-    public ResponseEntity<List<Restaurant>> getRestaurantsByDistrict(@PathVariable Long districtId) {
-        District district = new District();
-        district.setId(districtId);
-        return ResponseEntity.ok(restaurantService.getRestaurantsByDistrict(district));
+    @PostMapping
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
+        return restaurantService.saveRestaurant(restaurant);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Restaurant>> getRestaurantsByName(@RequestParam String name) {
-        return ResponseEntity.ok(restaurantService.getRestaurantsByName(name));
+    @PutMapping("/{id}")
+    public Restaurant updateRestaurant(@PathVariable Long id, @RequestBody Restaurant restaurant) {
+        restaurant.setId(id);
+        return restaurantService.saveRestaurant(restaurant);
     }
 
-    @GetMapping("/tag/{tagType}")
-    public ResponseEntity<List<Restaurant>> getRestaurantsByTag(@PathVariable RestaurantTagType restaurantTagType) {
-        return ResponseEntity.ok(restaurantService.getRestaurantsByTag(restaurantTagType));
+    @DeleteMapping("/{id}")
+    public void deleteRestaurant(@PathVariable Long id) {
+        restaurantService.deleteRestaurant(id);
+    }
+
+    @PostMapping("/{id}/favorite")
+    public ResponseEntity<?> toggleFavoriteRestaurant(@PathVariable Long id, Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User must be logged in to favorite a restaurant");
+        }
+
+        Long userId = Long.parseLong(authentication.getName());
+        userService.toggleFavorite(userId, id, Favorite.ItemType.RESTAURANT);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/favorites")
+    public ResponseEntity<List<Restaurant>> getFavoriteRestaurants(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        Long userId = Long.parseLong(authentication.getName());
+        List<Restaurant> favorites = userService.getFavoriteRestaurants(userId);
+
+        return ResponseEntity.ok(favorites);
     }
 }

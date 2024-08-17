@@ -1,38 +1,30 @@
 package com.example.hackdemo.service;
 
-import com.example.hackdemo.entity.District;
-import com.example.hackdemo.entity.Restaurant;
-import com.example.hackdemo.enumeration.RestaurantTagType;
+import com.example.hackdemo.model.Restaurant;
 import com.example.hackdemo.repository.RestaurantRepository;
-import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class RestaurantService {
-    private final RestaurantRepository restaurantRepository;
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
     public List<Restaurant> getAllRestaurants() {
         return restaurantRepository.findAll();
     }
 
     public Restaurant getRestaurantById(Long id) {
-        return restaurantRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Restaurant not found with id: " + id));
+        return restaurantRepository.findById(id).orElse(null);
     }
 
-    public List<Restaurant> getRestaurantsByDistrict(District district) {
-        return restaurantRepository.findByDistrict(district);
+    public Restaurant saveRestaurant(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
     }
 
-    public List<Restaurant> getRestaurantsByName(String name) {
-        return restaurantRepository.findByNameContaining(name);
-    }
-
-    public List<Restaurant> getRestaurantsByTag(RestaurantTagType restaurantTagType) {
-        return restaurantRepository.findByTagsType(restaurantTagType);
+    public void deleteRestaurant(Long id) {
+        restaurantRepository.deleteById(id);
     }
 }
