@@ -14,9 +14,7 @@ public class User {
     private Long id;
     private String email;
     private String name;
-    private String imageUrl;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Favorite> favorites = new HashSet<>();
-
 }

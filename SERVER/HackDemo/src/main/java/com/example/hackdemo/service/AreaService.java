@@ -27,4 +27,5 @@ public class AreaService {
     public void deleteArea(Long id) {
         areaRepository.deleteById(id);
     }
+    
 }

@@ -24,13 +24,12 @@ public class UserService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public User findOrCreateUser(String email, String name, String imageUrl) {
+    public User findOrCreateUser(String email, String name) {
         return userRepository.findByEmail(email)
                 .orElseGet(() -> {
                     User newUser = new User();
                     newUser.setEmail(email);
                     newUser.setName(name);
-                    newUser.setImageUrl(imageUrl);
                     return userRepository.save(newUser);
                 });
     }

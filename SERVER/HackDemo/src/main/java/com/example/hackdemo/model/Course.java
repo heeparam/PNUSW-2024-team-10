@@ -33,5 +33,4 @@ public class Course {
     )
     private List<Area> areas;
 
-
 }

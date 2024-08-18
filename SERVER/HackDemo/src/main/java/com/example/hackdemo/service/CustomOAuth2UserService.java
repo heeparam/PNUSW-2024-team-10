@@ -24,9 +24,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         String email = oauth2User.getAttribute("email");
         String name = oauth2User.getAttribute("name");
-        String imageUrl = oauth2User.getAttribute("picture");
 
-        User user = userService.findOrCreateUser(email, name, imageUrl);
+        User user = userService.findOrCreateUser(email, name);
 
         return new OAuth2User() {
             @Override
