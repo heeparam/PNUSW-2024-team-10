@@ -1,0 +1,11 @@
+{
+  "navigationLabelMap": "Map",
+  "navigationLabelCourses": "Courses",
+  "navigationLabelInfo": "Info",
+  "navigationLabelMore": "More",
+
+  "coursesScreenTitle": "Courses",
+  "coursesScreenTabAll": "All",
+  "coursesScreenTabLiked": "Liked",
+  "coursesScreenTabDone": "Done"
+}

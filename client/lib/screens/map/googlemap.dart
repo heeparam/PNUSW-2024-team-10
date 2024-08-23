@@ -12,8 +12,11 @@ class _HeronGoogleMapState extends State<HeronGoogleMap> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top,
+      ),
       initialCameraPosition: CameraPosition(
-          target: LatLng(35.1731121, 129.0714122), zoom: 10.6, bearing: 23),
+          target: LatLng(35.143112, 129.041412), zoom: 10.6, bearing: 34),
       mapType: MapType.normal,
       style: Theme.of(context).brightness == Brightness.dark
           ? _darkMapStyle

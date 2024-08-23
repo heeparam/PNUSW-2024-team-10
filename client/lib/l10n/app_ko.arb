@@ -1,0 +1,11 @@
+{
+  "navigationLabelMap": "지도",
+  "navigationLabelCourses": "코스",
+  "navigationLabelInfo": "정보",
+  "navigationLabelMore": "더보기",
+
+  "coursesScreenTitle": "코스",
+  "coursesScreenTabAll": "전체",
+  "coursesScreenTabLiked": "좋아요",
+  "coursesScreenTabDone": "완료"
+}

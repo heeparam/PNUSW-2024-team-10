@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CoursesScreen extends StatelessWidget {
   const CoursesScreen({super.key});
@@ -7,12 +8,13 @@ class CoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context)!;
 
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Courses"),
+          title: Text(l10n.coursesScreenTitle),
           backgroundColor: colorScheme.surfaceBright,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(48),
@@ -28,24 +30,24 @@ class CoursesScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: TabBar(
                       padding: EdgeInsets.zero,
                       dividerColor: Colors.transparent,
                       tabs: [
-                        Tab(text: "All"),
-                        Tab(text: "Liked"),
-                        Tab(text: "Done"),
+                        Tab(text: l10n.coursesScreenTabAll),
+                        Tab(text: l10n.coursesScreenTabLiked),
+                        Tab(text: l10n.coursesScreenTabDone),
                       ],
                     ),
                   ),
-                  const SizedBox(width: 8.0),
+                  const SizedBox(width: 6.0),
                   IconButton(
                     onPressed: () {},
                     icon: HugeIcon(
-                      icon: HugeIcons.strokeRoundedFilterHorizontal,
-                      color: colorScheme.outline,
-                    ),
+                        icon: HugeIcons.strokeRoundedFilterHorizontal,
+                        color: colorScheme.outline,
+                        size: 20.0),
                   ),
                 ],
               ),

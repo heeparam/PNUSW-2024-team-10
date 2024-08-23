@@ -1,6 +1,7 @@
 import 'package:client/utilities/ripple.dart';
-import 'package:client/widgets/button/button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeronApp extends StatelessWidget {
   final Widget? child;
@@ -105,7 +106,22 @@ class HeronApp extends StatelessWidget {
       ),
     );
 
-    TabBarTheme tabBarTheme(ColorScheme colorScheme) => TabBarTheme(
+    ThemeData themeBuilder(ColorScheme colorScheme) {
+      return ThemeData(
+        fontFamily: "Pretendard",
+        colorScheme: colorScheme,
+        useMaterial3: true,
+        textTheme: textTheme,
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+            splashFactory: HeronRipple.splashFactory,
+            shadowColor: WidgetStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(
+              colorScheme.onSurface.withOpacity(0.05),
+            ),
+          ),
+        ),
+        tabBarTheme: TabBarTheme(
           splashFactory: NoSplash.splashFactory,
           overlayColor: WidgetStateProperty.all(Colors.transparent),
           indicatorColor: colorScheme.primaryContainer,
@@ -121,9 +137,8 @@ class HeronApp extends StatelessWidget {
               width: 3,
             ),
           ),
-        );
-
-    AppBarTheme appbarTheme(ColorScheme colorScheme) => AppBarTheme(
+        ),
+        appBarTheme: AppBarTheme(
           centerTitle: false,
           scrolledUnderElevation: 0,
           titleTextStyle: textTheme.headlineMedium!.copyWith(
@@ -135,27 +150,17 @@ class HeronApp extends StatelessWidget {
           //   bottom: BorderSide(
           //       color: colorScheme.surfaceContainerHigh),
           // ),
-        );
+        ),
+      );
+    }
 
     return MaterialApp(
       title: 'Heron',
       themeMode: ThemeMode.system,
-      theme: ThemeData(
-        fontFamily: "Pretendard",
-        colorScheme: colorScheme,
-        useMaterial3: true,
-        textTheme: textTheme,
-        tabBarTheme: tabBarTheme(colorScheme),
-        appBarTheme: appbarTheme(colorScheme),
-      ),
-      darkTheme: ThemeData(
-        fontFamily: "Pretendard",
-        colorScheme: darkColorScheme,
-        useMaterial3: true,
-        textTheme: textTheme,
-        tabBarTheme: tabBarTheme(darkColorScheme),
-        appBarTheme: appbarTheme(darkColorScheme),
-      ),
+      theme: themeBuilder(colorScheme),
+      darkTheme: themeBuilder(darkColorScheme),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: child,
     );
   }
