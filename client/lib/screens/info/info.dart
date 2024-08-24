@@ -1,4 +1,4 @@
-import 'package:client/screens/info/notionview.dart';
+import 'package:heron/screens/info/notionview.dart';
 import 'package:flutter/material.dart';
 
 class InfoScreen extends StatelessWidget {

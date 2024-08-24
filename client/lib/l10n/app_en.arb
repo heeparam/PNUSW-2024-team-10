@@ -1,11 +1,53 @@
 {
+  "commonConfirmationYes": "Yes",
+  "commonConfirmationNo": "No",
+
   "navigationLabelMap": "Map",
   "navigationLabelCourses": "Courses",
   "navigationLabelInfo": "Info",
-  "navigationLabelMore": "More",
+  "navigationLabelProfile": "Profile",
 
-  "coursesScreenTitle": "Courses",
-  "coursesScreenTabAll": "All",
-  "coursesScreenTabLiked": "Liked",
-  "coursesScreenTabDone": "Done"
+  "coursesTabAll": "All",
+  "coursesTabLiked": "Liked",
+  "coursesTabDone": "Done",
+
+  "profileCourseCount": "{count} courses finished",
+  "@profileCourseCount": {
+    "description": "The number of courses the user has completed",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "profileMissionCount": "{count} missions completed",
+  "@profileMissionCount": {
+    "description": "The number of missions the user has completed",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "profileGalleryHeader": "Gallery",
+  "profileGalleryEmpty": "Take a photo while progressing through the course!",
+
+  "settingsTitle": "Settings",
+
+  "settingsUserLabel": "User",
+  "settingsUserSignOut": "Sign Out",
+  "settingsUserSignOutConfirmation": "Are you sure you want to sign out?",
+  "settingsUserSignOutSuccess": "Signed out successfully",
+  "settingsUserLanguage": "Change Language",
+  "settingsUserLanguageSystem": "System Default",
+  "settingsUserLanguageEnglish": "English",
+  "settingsUserLanguageKorean": "Korean (한국어)",
+
+  "settingsAppInfoLabel": "Information",
+  "settingsAppInfoVersion": "Version",
+  "settingsAppInfoTermsAndPolicy": "Terms and Policy",
+  "settingsAppInfoLicenses": "Open Source Licenses",
+  "settingsAppInfoRepository": "View GitHub Repository"
 }

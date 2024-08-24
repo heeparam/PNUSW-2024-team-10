@@ -1,14 +1,13 @@
-import 'package:client/utilities/ripple.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:heron/utilities/ripple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeronApp extends StatelessWidget {
-  final Widget? child;
+  final RouterConfig<Object> routerConfig;
 
   const HeronApp({
     super.key,
-    this.child,
+    required this.routerConfig,
   });
 
   @override
@@ -89,19 +88,19 @@ class HeronApp extends StatelessWidget {
       labelLarge: TextStyle(
         fontSize: 16,
         height: 1.42,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         letterSpacing: 0.0,
       ),
       labelMedium: TextStyle(
         fontSize: 14,
         height: 1.42,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         letterSpacing: 0.0,
       ),
       labelSmall: TextStyle(
         fontSize: 12,
         height: 1.42,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         letterSpacing: 0.0,
       ),
     );
@@ -138,30 +137,53 @@ class HeronApp extends StatelessWidget {
             ),
           ),
         ),
-        appBarTheme: AppBarTheme(
-          centerTitle: false,
-          scrolledUnderElevation: 0,
-          titleTextStyle: textTheme.headlineMedium!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: colorScheme.onSurface,
+        switchTheme: SwitchThemeData(
+          trackOutlineWidth: WidgetStateProperty.all(1.0),
+          thumbColor: WidgetStateProperty.resolveWith(
+            (states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.outlineVariant;
+              }
+              if (states.contains(WidgetState.selected)) {
+                return colorScheme.onPrimaryContainer;
+              }
+              return colorScheme.outline;
+            },
           ),
-          // backgroundColor: colorScheme.surfaceContainerLowest,
-          // shape: Border(
-          //   bottom: BorderSide(
-          //       color: colorScheme.surfaceContainerHigh),
-          // ),
+          trackColor: WidgetStateProperty.resolveWith(
+            (states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.surfaceContainerHighest;
+              }
+              if (states.contains(WidgetState.selected)) {
+                return colorScheme.primaryContainer;
+              }
+              return colorScheme.outline.withOpacity(0.1);
+            },
+          ),
+          trackOutlineColor: WidgetStateProperty.resolveWith(
+            (states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.outlineVariant;
+              }
+              if (states.contains(WidgetState.selected)) {
+                return colorScheme.primaryContainer;
+              }
+              return colorScheme.outline.withOpacity(0.7);
+            },
+          ),
         ),
       );
     }
 
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Heron',
       themeMode: ThemeMode.system,
       theme: themeBuilder(colorScheme),
       darkTheme: themeBuilder(darkColorScheme),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: child,
+      routerConfig: routerConfig,
     );
   }
 }

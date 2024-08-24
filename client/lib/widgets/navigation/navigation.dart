@@ -1,7 +1,7 @@
 import "dart:async";
 import "dart:ui";
 
-import "package:client/utilities/ripple.dart";
+import "package:heron/utilities/ripple.dart";
 import "package:flutter/material.dart";
 import "package:hugeicons/hugeicons.dart";
 
@@ -88,9 +88,9 @@ class _HeronNavigationBarItemWidgetState
     with SingleTickerProviderStateMixin {
   final _itemKey = GlobalKey();
   final _containerKey = GlobalKey();
-  final Duration pressDuration = const Duration(milliseconds: 32);
-  final Duration releaseWaitDuration = const Duration(milliseconds: 240);
-  final Duration releaseDuration = const Duration(milliseconds: 120);
+  final Duration pressDuration = const Duration(milliseconds: 24);
+  final Duration releaseWaitDuration = const Duration(milliseconds: 120);
+  final Duration releaseDuration = const Duration(milliseconds: 180);
 
   double itemWidth = 0.0;
   double containerWidth = 0.0;
@@ -137,7 +137,7 @@ class _HeronNavigationBarItemWidgetState
       reverseDuration: releaseDuration,
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.95).animate(
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.94).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
 
@@ -190,7 +190,7 @@ class _HeronNavigationBarItemWidgetState
               customBorder: NavigationItemShapeBorder(
                 widthFraction: itemWidth / containerWidth,
                 heightInset: 6.0,
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(6.0),
               ),
               splashFactory: HeronRipple.splashFactory,
               splashColor:

@@ -1,3 +1,5 @@
+import 'package:heron/widgets/appbar/appbar.dart';
+import 'package:heron/widgets/button/icon.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,21 +15,15 @@ class CoursesScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(l10n.coursesScreenTitle),
-          backgroundColor: colorScheme.surfaceBright,
+        appBar: HeronAppBar(
+          hasBackButton: false,
+          title: Text(l10n.navigationLabelCourses),
+          largeTitle: true,
+          forceElevation: true,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(48),
             child: Container(
               padding: const EdgeInsets.only(right: 16.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: colorScheme.outlineVariant,
-                    width: 1.0,
-                  ),
-                ),
-              ),
               child: Row(
                 children: [
                   Expanded(
@@ -35,19 +31,18 @@ class CoursesScreen extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       dividerColor: Colors.transparent,
                       tabs: [
-                        Tab(text: l10n.coursesScreenTabAll),
-                        Tab(text: l10n.coursesScreenTabLiked),
-                        Tab(text: l10n.coursesScreenTabDone),
+                        Tab(text: l10n.coursesTabAll),
+                        Tab(text: l10n.coursesTabLiked),
+                        Tab(text: l10n.coursesTabDone),
                       ],
                     ),
                   ),
                   const SizedBox(width: 6.0),
-                  IconButton(
+                  HeronIconButton(
                     onPressed: () {},
-                    icon: HugeIcon(
-                        icon: HugeIcons.strokeRoundedFilterHorizontal,
-                        color: colorScheme.outline,
-                        size: 20.0),
+                    size: 36.0,
+                    icon: Icon(HugeIcons.strokeRoundedFilterHorizontal,
+                        color: colorScheme.outline, size: 20.0),
                   ),
                 ],
               ),

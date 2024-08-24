@@ -1,4 +1,4 @@
-import 'package:client/utilities/ripple.dart';
+import 'package:heron/utilities/ripple.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 

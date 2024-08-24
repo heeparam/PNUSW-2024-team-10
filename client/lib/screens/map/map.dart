@@ -1,4 +1,4 @@
-import 'package:client/screens/map/googlemap.dart';
+import 'package:heron/screens/map/googlemap.dart';
 import 'package:flutter/material.dart';
 
 class MapScreen extends StatelessWidget {
