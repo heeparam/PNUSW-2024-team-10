@@ -1,7 +1,6 @@
 package com.example.hackdemo.model;
 
-import com.example.hackdemo.enums.CourseDuration;
-import com.example.hackdemo.enums.Theme;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,14 +14,11 @@ public class Course {
     private Long id;
 
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    private Theme theme;
-
-    @Enumerated(EnumType.STRING)
-    private CourseDuration duration;
+    private String theme;
+    private String duration;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<CourseItem> courseItems;
 
     @ManyToMany

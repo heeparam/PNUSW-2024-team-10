@@ -1,6 +1,11 @@
 package com.example.hackdemo.repository;
 
+import com.example.hackdemo.dto.CourseDTO;
 import com.example.hackdemo.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CourseRepository extends JpaRepository<Course, Long> {}
+import java.util.List;
+
+public interface CourseRepository extends JpaRepository<Course, Long> {
+    List<Course> findByName(String name);
+}

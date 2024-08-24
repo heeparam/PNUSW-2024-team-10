@@ -16,18 +16,19 @@ public class Favorite {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "item_id")
-    private Long itemId;
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "item_type")
-    private ItemType itemType;
+    @ManyToOne
+    @JoinColumn(name = "tour_spot_id")
+    private TourSpot tourSpot;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
-    public enum ItemType {
-        RESTAURANT, TOUR_SPOT, COURSE
-    }
 
 }

@@ -23,6 +23,7 @@ public class CourseItemController {
         return courseItemService.getCourseItemById(id);
     }
 
+    /*
     @PostMapping
     public CourseItem createCourseItem(@RequestBody CourseItem courseItem) {
         return courseItemService.saveCourseItem(courseItem);
@@ -38,4 +39,5 @@ public class CourseItemController {
     public void deleteCourseItem(@PathVariable Long id) {
         courseItemService.deleteCourseItem(id);
     }
+    */
 }

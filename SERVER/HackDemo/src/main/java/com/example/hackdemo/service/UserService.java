@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,43 +35,73 @@ public class UserService {
                 });
     }
 
-    public void toggleFavorite(Long userId, Long itemId, Favorite.ItemType itemType) {
-        User user = userRepository.findById(userId).orElseThrow();
-        Optional<Favorite> existingFavorite = favoriteRepository.findByUserIdAndItemIdAndItemType(userId, itemId, itemType);
+    public void toggleFavorite(Long userId, Long restaurantId, Long tourSpotId, Long courseId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException("User not found"));
+
+        Optional<Favorite> existingFavorite = Optional.empty();
+
+        if (restaurantId != null) {
+            existingFavorite = favoriteRepository.findByUserIdAndRestaurantId(userId, restaurantId);
+        } else if (tourSpotId != null) {
+            existingFavorite = favoriteRepository.findByUserIdAndTourSpotId(userId, tourSpotId);
+        } else if (courseId != null) {
+            existingFavorite = favoriteRepository.findByUserIdAndCourseId(userId, courseId);
+        } else {
+            throw new IllegalArgumentException("One of restaurantId, tourSpotId, or courseId must be provided");
+        }
 
         if (existingFavorite.isPresent()) {
             favoriteRepository.delete(existingFavorite.get());
         } else {
             Favorite newFavorite = new Favorite();
             newFavorite.setUser(user);
-            newFavorite.setItemId(itemId);
-            newFavorite.setItemType(itemType);
             newFavorite.setCreatedAt(LocalDateTime.now());
+
+            if (restaurantId != null) {
+                Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                        .orElseThrow(() -> new NoSuchElementException("Restaurant not found"));
+                newFavorite.setRestaurant(restaurant);
+            } else if (tourSpotId != null) {
+                TourSpot tourSpot = tourSpotRepository.findById(tourSpotId)
+                        .orElseThrow(() -> new NoSuchElementException("TourSpot not found"));
+                newFavorite.setTourSpot(tourSpot);
+            } else if (courseId != null) {
+                Course course = courseRepository.findById(courseId)
+                        .orElseThrow(() -> new NoSuchElementException("Course not found"));
+                newFavorite.setCourse(course);
+            }
+
             favoriteRepository.save(newFavorite);
         }
     }
 
     public List<Restaurant> getFavoriteRestaurants(Long userId) {
-        List<Favorite> favorites = favoriteRepository.findByUserIdAndItemType(userId, Favorite.ItemType.RESTAURANT);
+        List<Favorite> favorites = favoriteRepository.findByUserIdAndRestaurantIsNotNull(userId);
         return favorites.stream()
-                .map(f -> restaurantRepository.findById(f.getItemId()).orElse(null))
+                .map(Favorite::getRestaurant)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
     public List<TourSpot> getFavoriteTourSpots(Long userId) {
-        List<Favorite> favorites = favoriteRepository.findByUserIdAndItemType(userId, Favorite.ItemType.TOUR_SPOT);
+        List<Favorite> favorites = favoriteRepository.findByUserIdAndTourSpotIsNotNull(userId);
         return favorites.stream()
-                .map(f -> tourSpotRepository.findById(f.getItemId()).orElse(null))
+                .map(Favorite::getTourSpot)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
     public List<Course> getFavoriteCourses(Long userId) {
-        List<Favorite> favorites = favoriteRepository.findByUserIdAndItemType(userId, Favorite.ItemType.COURSE);
+        List<Favorite> favorites = favoriteRepository.findByUserIdAndCourseIsNotNull(userId);
         return favorites.stream()
-                .map(f -> courseRepository.findById(f.getItemId()).orElse(null))
+                .map(Favorite::getCourse)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+    }
+
+    public List<Favorite> getAllFavorites(Long userId) {
+        userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User not found"));
+        return favoriteRepository.findAllByUserId(userId);
     }
 }

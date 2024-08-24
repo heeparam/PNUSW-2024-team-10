@@ -1,5 +1,6 @@
 package com.example.hackdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ public class CourseItem {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
+    @JsonBackReference
     private Course course;
 
     @ManyToOne
@@ -24,9 +26,7 @@ public class CourseItem {
 
     private String description;
     private String mission;
-    private Integer duration; // in minutes
+    private String duration;
 
     private boolean isLandmark;
-
-    // getters and setters
 }

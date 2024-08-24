@@ -1,9 +1,6 @@
 package com.example.hackdemo.model;
 
-import com.example.hackdemo.enums.EatingAlone;
-import com.example.hackdemo.enums.FoodType;
-import com.example.hackdemo.enums.HalalOrVegan;
-import com.example.hackdemo.enums.MichelinGuide;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,27 +8,23 @@ import lombok.Data;
 @Data
 public class Restaurant {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String googleId;
     private String name;
     private String address;
     private String mainMenu;
-
-    @Enumerated(EnumType.STRING)
-    private FoodType foodType;
-
-    @Enumerated(EnumType.STRING)
-    private EatingAlone eatingAlone;
-
-    @Enumerated(EnumType.STRING)
-    private HalalOrVegan halalOrVegan;
-
-    @Enumerated(EnumType.STRING)
-    private MichelinGuide michelinGuide;
+    private String foodType;
+    private String eatingAlone;
+    private String halalOrVegan;
+    private String michelinGuide;
+    private Double xCoordinate;
+    private Double yCoordinate;
 
     @ManyToOne
     @JoinColumn(name = "area_id")
+    @JsonBackReference
     private Area area;
 
 }

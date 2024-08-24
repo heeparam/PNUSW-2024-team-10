@@ -29,22 +29,6 @@ public class RestaurantController {
         return restaurantService.getRestaurantById(id);
     }
 
-    @PostMapping
-    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-        return restaurantService.saveRestaurant(restaurant);
-    }
-
-    @PutMapping("/{id}")
-    public Restaurant updateRestaurant(@PathVariable Long id, @RequestBody Restaurant restaurant) {
-        restaurant.setId(id);
-        return restaurantService.saveRestaurant(restaurant);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteRestaurant(@PathVariable Long id) {
-        restaurantService.deleteRestaurant(id);
-    }
-
     @PostMapping("/{id}/favorite")
     public ResponseEntity<?> toggleFavoriteRestaurant(@PathVariable Long id, Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -52,7 +36,7 @@ public class RestaurantController {
         }
 
         Long userId = Long.parseLong(authentication.getName());
-        userService.toggleFavorite(userId, id, Favorite.ItemType.RESTAURANT);
+        userService.toggleFavorite(userId, id,null,null );
 
         return ResponseEntity.ok().build();
     }
@@ -68,4 +52,21 @@ public class RestaurantController {
 
         return ResponseEntity.ok(favorites);
     }
+
+    /*    @PostMapping
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
+        return restaurantService.saveRestaurant(restaurant);
+    }
+
+    @PutMapping("/{id}")
+    public Restaurant updateRestaurant(@PathVariable Long id, @RequestBody Restaurant restaurant) {
+        restaurant.setId(id);
+        return restaurantService.saveRestaurant(restaurant);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRestaurant(@PathVariable Long id) {
+        restaurantService.deleteRestaurant(id);
+    }*/
+
 }

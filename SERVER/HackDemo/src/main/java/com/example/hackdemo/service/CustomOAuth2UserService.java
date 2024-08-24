@@ -40,7 +40,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
             @Override
             public String getName() {
-                return user.getId().toString();
+                return name;
             }
         };
     }

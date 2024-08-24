@@ -1,8 +1,13 @@
 package com.example.hackdemo.controller;
 
+import com.example.hackdemo.dto.CourseDTO;
+import com.example.hackdemo.dto.CourseItemDTO;
 import com.example.hackdemo.model.Course;
+import com.example.hackdemo.model.CourseItem;
 import com.example.hackdemo.model.Favorite;
 import com.example.hackdemo.model.TourSpot;
+import com.example.hackdemo.model.Area;
+import com.example.hackdemo.repository.CourseRepository;
 import com.example.hackdemo.service.CourseService;
 import com.example.hackdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/course")
@@ -20,31 +26,17 @@ public class CourseController {
     private CourseService courseService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CourseRepository courseRepository;
 
     @GetMapping
-    public List<Course> getAllCourses() {
+    public List<CourseDTO> getAllCourses() {
         return courseService.getAllCourses();
     }
 
     @GetMapping("/{id}")
-    public Course getCourseById(@PathVariable Long id) {
+    public CourseDTO getCourseById(@PathVariable Long id) {
         return courseService.getCourseById(id);
-    }
-
-    @PostMapping
-    public Course createCourse(@RequestBody Course course) {
-        return courseService.saveCourse(course);
-    }
-
-    @PutMapping("/{id}")
-    public Course updateCourse(@PathVariable Long id, @RequestBody Course course) {
-        course.setId(id);
-        return courseService.saveCourse(course);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCourse(@PathVariable Long id) {
-        courseService.deleteCourse(id);
     }
 
     @PostMapping("/{id}/favorite")
@@ -54,7 +46,7 @@ public class CourseController {
         }
 
         Long userId = Long.parseLong(authentication.getName());
-        userService.toggleFavorite(userId, id, Favorite.ItemType.COURSE);
+        userService.toggleFavorite(userId,null,null ,id);
 
         return ResponseEntity.ok().build();
     }
@@ -70,4 +62,21 @@ public class CourseController {
 
         return ResponseEntity.ok(favorites);
     }
+
+    /*    @PostMapping
+    public Course createCourse(@RequestBody Course course) {
+        return courseService.saveCourse(course);
+    }
+
+    @PutMapping("/{id}")
+    public Course updateCourse(@PathVariable Long id, @RequestBody Course course) {
+        course.setId(id);
+        return courseService.saveCourse(course);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCourse(@PathVariable Long id) {
+        courseService.deleteCourse(id);
+    }*/
+
 }

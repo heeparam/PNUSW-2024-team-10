@@ -23,26 +23,31 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/favorites/**").authenticated()
+                        .requestMatchers("/api/course/{id}/favorite").authenticated()
+                        .requestMatchers("/api/course/favorites").authenticated()
+                        .requestMatchers("/api/restaurant/{id}/favorite").authenticated()
+                        .requestMatchers("/api/restaurant/favorites").authenticated()
+                        .requestMatchers("/api/tourSpot/{id}/favorite").authenticated()
+                        .requestMatchers("/api/tourSpot/favorites").authenticated()
+                        .requestMatchers("/api/user/{userId}/favorites").authenticated()
+                        .requestMatchers("/api/auth/google").permitAll()
                         .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(customOAuth2UserService)
                         )
-                        .successHandler((request, response, authentication) -> {
-                            response.setContentType("application/json");
-                            response.getWriter().write("{\"success\": true}");
-                        })
+                        .defaultSuccessUrl("/api/auth/login-success", true)
                 )
                 .exceptionHandling(handling -> handling
                         .authenticationEntryPoint((request, response, authException) -> {
-                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setContentType("application/json");
-                            response.getWriter().write("{\"error\": \"Authentication required\"}");
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            String jsonResponse = "{\"error\": \"권한이 없습니다.\"}";
+                            response.getWriter().write(jsonResponse);
                         })
                 )
-                .csrf(csrf -> csrf.disable());  // 최신 버전의 CSRF 비활성화 방식
+                .csrf(csrf -> csrf.disable());
 
         return http.build();
     }

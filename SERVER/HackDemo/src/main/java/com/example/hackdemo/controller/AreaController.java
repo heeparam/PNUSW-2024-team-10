@@ -23,7 +23,7 @@ public class AreaController {
         return areaService.getAreaById(id);
     }
 
-    @PostMapping
+    /*    @PostMapping
     public Area createArea(@RequestBody Area area) {
         return areaService.saveArea(area);
     }
@@ -37,5 +37,6 @@ public class AreaController {
     @DeleteMapping("/{id}")
     public void deleteArea(@PathVariable Long id) {
         areaService.deleteArea(id);
-    }
+    }*/
+
 }

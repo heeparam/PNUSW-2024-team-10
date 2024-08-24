@@ -31,22 +31,6 @@ public class TourSpotController {
         return tourSpotService.getTourSpotById(id);
     }
 
-    @PostMapping
-    public TourSpot createTourSpot(@RequestBody TourSpot tourSpot) {
-        return tourSpotService.saveTourSpot(tourSpot);
-    }
-
-    @PutMapping("/{id}")
-    public TourSpot updateTourSpot(@PathVariable Long id, @RequestBody TourSpot tourSpot) {
-        tourSpot.setId(id);
-        return tourSpotService.saveTourSpot(tourSpot);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteTourSpot(@PathVariable Long id) {
-        tourSpotService.deleteTourSpot(id);
-    }
-
     @PostMapping("/{id}/favorite")
     public ResponseEntity<?> toggleFavoriteTourSpot(@PathVariable Long id, Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -54,7 +38,7 @@ public class TourSpotController {
         }
 
         Long userId = Long.parseLong(authentication.getName());
-        userService.toggleFavorite(userId, id, Favorite.ItemType.TOUR_SPOT);
+        userService.toggleFavorite(userId, null,id,null);
 
         return ResponseEntity.ok().build();
     }
@@ -70,4 +54,21 @@ public class TourSpotController {
 
         return ResponseEntity.ok(favorites);
     }
+
+    /*    @PostMapping
+    public TourSpot createTourSpot(@RequestBody TourSpot tourSpot) {
+        return tourSpotService.saveTourSpot(tourSpot);
+    }
+
+    @PutMapping("/{id}")
+    public TourSpot updateTourSpot(@PathVariable Long id, @RequestBody TourSpot tourSpot) {
+        tourSpot.setId(id);
+        return tourSpotService.saveTourSpot(tourSpot);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTourSpot(@PathVariable Long id) {
+        tourSpotService.deleteTourSpot(id);
+    }
+    */
 }
