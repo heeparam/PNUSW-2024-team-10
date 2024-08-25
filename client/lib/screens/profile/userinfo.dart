@@ -135,7 +135,7 @@ class ProfileUserStatisticsItem extends StatelessWidget {
 
     return Row(
       children: [
-        Icon(icon, size: 18.0, color: colorScheme.outline),
+        Icon(icon, size: 18.0, color: colorScheme.primary),
         const SizedBox(width: 8.0),
         Text(value, style: textTheme.bodyLarge),
       ],

@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:heron/widgets/button/icon.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -46,75 +47,87 @@ class HeronAppBar extends StatelessWidget implements PreferredSizeWidget {
             (scrollOffsetEnd - scrollOffsetStart))
         .clamp(0.0, 1.0);
 
-    return Stack(
-      children: [
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 0,
-          top: 0,
-          child: Opacity(
-            opacity: forceElevation ? 1.0 : opacity,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceBright,
-                border: disableBorder
-                    ? null
-                    : Border(
-                        bottom: BorderSide(
-                          color: colorScheme.outlineVariant,
-                          width: 1.0,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: colorScheme.brightness == Brightness.light
+            ? Brightness.dark
+            : Brightness.light,
+        systemNavigationBarIconBrightness: colorScheme.brightness,
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            top: 0,
+            child: Opacity(
+              opacity: forceElevation ? 1.0 : opacity,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: colorScheme.surfaceBright,
+                  border: disableBorder
+                      ? null
+                      : Border(
+                          bottom: BorderSide(
+                            color: colorScheme.outlineVariant,
+                            width: 1.0,
+                          ),
                         ),
-                      ),
+                ),
               ),
             ),
           ),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: padding.top),
-          child: Material(
-            color: Colors.transparent,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  height: 56.0,
-                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      if (leading != null && !hasPop) leading!,
-                      if (hasPop)
-                        HeronIconButton(
-                          icon: const Icon(HugeIcons.strokeRoundedArrowLeft02),
-                          onPressed: () => Navigator.of(context).pop(),
-                        ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: hasLeading ? 6.0 : 10.0,
-                          right: 10.0,
-                        ),
-                        child: DefaultTextStyle(
-                          style: largeTitle
-                              ? textTheme.headlineMedium!
-                              : textTheme.headlineSmall!,
-                          child: Opacity(
-                            opacity: hideTitleOnTop ? opacity : 1.0,
-                            child: title,
+          Container(
+            padding: EdgeInsets.only(top: padding.top),
+            child: Material(
+              color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    height: 56.0,
+                    padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (leading != null && !hasPop) leading!,
+                        if (hasPop)
+                          HeronIconButton(
+                            icon: const Icon(
+                              HugeIcons.strokeRoundedArrowLeft01,
+                              size: 32.0,
+                            ),
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: hasLeading ? 6.0 : 10.0,
+                            right: 10.0,
+                          ),
+                          child: DefaultTextStyle(
+                            style: largeTitle
+                                ? textTheme.headlineMedium!
+                                : textTheme.headlineSmall!,
+                            child: Opacity(
+                              opacity: hideTitleOnTop ? opacity : 1.0,
+                              child: title,
+                            ),
                           ),
                         ),
-                      ),
-                      const Spacer(),
-                      if (actions != null) ...actions!,
-                    ],
+                        const Spacer(),
+                        if (actions != null) ...actions!,
+                      ],
+                    ),
                   ),
-                ),
-                if (bottom != null) bottom!,
-              ],
+                  if (bottom != null) bottom!,
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

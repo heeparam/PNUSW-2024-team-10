@@ -2,6 +2,21 @@
   "commonConfirmationYes": "Yes",
   "commonConfirmationNo": "No",
 
+  "placeZoneHaeundae": "Haeundae/Gwangalli",
+  "placeZoneDowntown": "Original Downtown",
+  "placeZoneGijang": "Gijang",
+
+  "tourSpotThemeHistory": "History",
+  "tourSpotThemeNature": "Nature",
+  "tourSpotThemeCulture": "Culture",
+  "tourSpotThemeShopping": "Shopping",
+
+  "foodVegan": "Vegan",
+  "foodBlueRibbon": "Blue Ribbon Survey",
+  "foodHalal": "Halal",
+  "foodMichelin": "Michelin Guide",
+  "foodSingle": "Single Seat",
+
   "navigationLabelMap": "Map",
   "navigationLabelCourses": "Courses",
   "navigationLabelInfo": "Info",
@@ -9,7 +24,21 @@
 
   "coursesTabAll": "All",
   "coursesTabLiked": "Liked",
-  "coursesTabDone": "Done",
+  "coursesTabDone": "Completed",
+
+  "coursesListHeaderNow": "In Progress",
+  "coursesListHeaderAll": "All Courses",
+
+  "coursesStatusNow": "In Progress",
+  "coursesStatusLiked": "Liked",
+  "coursesStatusDone": "Completed",
+
+  "coursesDurationOneDay": "Day Trip",
+  "coursesDurationOverNight": "Overnight",
+
+  "coursesLandmark": "Landmark",
+
+  "coursesDetailHeader": "Course",
 
   "profileCourseCount": "{count} courses finished",
   "@profileCourseCount": {

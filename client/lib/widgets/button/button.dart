@@ -37,8 +37,8 @@ class _HeronButtonState extends State<HeronButton> {
   Completer<void>? _delayCompleter;
 
   final Duration pressDuration = const Duration(milliseconds: 32);
-  final Duration releaseWaitDuration = const Duration(milliseconds: 240);
-  final Duration releaseDuration = const Duration(milliseconds: 120);
+  final Duration releaseWaitDuration = const Duration(milliseconds: 120);
+  final Duration releaseDuration = const Duration(milliseconds: 180);
 
   late DateTime _pressStartTime;
 

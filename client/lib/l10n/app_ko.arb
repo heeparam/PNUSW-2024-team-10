@@ -2,6 +2,21 @@
   "commonConfirmationYes": "예",
   "commonConfirmationNo": "아니요",
 
+  "placeZoneHaeundae": "해운대/광안리",
+  "placeZoneDowntown": "원도심",
+  "placeZoneGijang": "기장",
+
+  "tourSpotThemeHistory": "역사",
+  "tourSpotThemeNature": "자연",
+  "tourSpotThemeCulture": "문화",
+  "tourSpotThemeShopping": "쇼핑",
+
+  "foodVegan": "채식",
+  "foodBlueRibbon": "블루 리본",
+  "foodHalal": "할랄",
+  "foodMichelin": "미쉐린 가이드",
+  "foodSingle": "1인석",
+
   "navigationLabelMap": "지도",
   "navigationLabelCourses": "코스",
   "navigationLabelInfo": "정보",
@@ -10,6 +25,20 @@
   "coursesTabAll": "전체",
   "coursesTabLiked": "좋아요",
   "coursesTabDone": "완료",
+
+  "coursesListHeaderNow": "진행 중인 코스",
+  "coursesListHeaderAll": "모든 코스",
+
+  "coursesStatusNow": "진행 중",
+  "coursesStatusLiked": "좋아요",
+  "coursesStatusDone": "완료",
+
+  "coursesDurationOneDay": "당일치기",
+  "coursesDurationOverNight": "1박 2일",
+
+  "coursesLandmark": "랜드마크",
+
+  "coursesDetailHeader": "코스",
 
   "profileCourseCount": "코스 {count}개 완료",
   "profileMissionCount": "미션 {count}개 완료",

@@ -158,7 +158,7 @@ class _HeronNavigationBarItemWidgetState
   @override
   Widget build(BuildContext context) {
     final itemColor = widget.isSelected
-        ? Theme.of(context).colorScheme.primaryContainer
+        ? Theme.of(context).colorScheme.primary
         : Theme.of(context).colorScheme.outline;
 
     return Expanded(

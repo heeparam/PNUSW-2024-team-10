@@ -5,17 +5,22 @@ class HeronListGroup extends StatelessWidget {
   final String? header;
   final String? footer;
   final List<HeronListItem> children;
+  final double labelIndent;
+  final double dividerIndent;
+  final double dividerEndIndent;
 
   const HeronListGroup({
     super.key,
     this.header,
     this.footer,
     required this.children,
+    this.labelIndent = 16.0,
+    this.dividerIndent = 16.0,
+    this.dividerEndIndent = 0.0,
   });
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
@@ -23,7 +28,11 @@ class HeronListGroup extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (header != null) HeronListGroupLabel(header),
+          if (header != null)
+            HeronListGroupLabel(
+              header,
+              indent: labelIndent,
+            ),
           Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
@@ -43,14 +52,19 @@ class HeronListGroup extends StatelessWidget {
                       Divider(
                         color: colorScheme.outlineVariant,
                         height: 1.0,
-                        indent: 16.0,
+                        indent: dividerIndent,
+                        endIndent: dividerEndIndent,
                       ),
                   ],
                 ),
               ),
             ),
           ),
-          if (footer != null) HeronListGroupLabel(footer),
+          if (footer != null)
+            HeronListGroupLabel(
+              footer,
+              indent: labelIndent,
+            ),
         ],
       ),
     );
@@ -59,8 +73,13 @@ class HeronListGroup extends StatelessWidget {
 
 class HeronListGroupLabel extends StatelessWidget {
   final String? content;
+  final double indent;
 
-  const HeronListGroupLabel(this.content, {super.key});
+  const HeronListGroupLabel(
+    this.content, {
+    super.key,
+    this.indent = 16.0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +87,8 @@ class HeronListGroupLabel extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
+      padding: EdgeInsets.symmetric(
+        horizontal: indent,
         vertical: 8.0,
       ),
       child: Text(
