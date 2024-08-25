@@ -1,23 +1,15 @@
 package com.example.hackdemo.config;
 
-import com.example.hackdemo.service.CustomOAuth2UserService;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
-
-    private final CustomOAuth2UserService customOAuth2UserService;
-
-    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
-        this.customOAuth2UserService = customOAuth2UserService;
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -34,18 +26,12 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(customOAuth2UserService)
-                        )
                         .defaultSuccessUrl("/api/auth/login-success", true)
+                        .permitAll()
                 )
-                .exceptionHandling(handling -> handling
-                        .authenticationEntryPoint((request, response, authException) -> {
-                            response.setContentType("application/json");
-                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                            String jsonResponse = "{\"error\": \"권한이 없습니다.\"}";
-                            response.getWriter().write(jsonResponse);
-                        })
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/api/auth/logout-success") // 로그아웃 후 리디렉션될 엔드포인트
+                        .permitAll()
                 )
                 .csrf(csrf -> csrf.disable());
 

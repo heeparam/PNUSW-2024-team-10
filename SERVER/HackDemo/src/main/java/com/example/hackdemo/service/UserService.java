@@ -2,6 +2,9 @@ package com.example.hackdemo.service;
 
 import com.example.hackdemo.model.*;
 import com.example.hackdemo.repository.*;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +28,26 @@ public class UserService {
     @Autowired
     private CourseRepository courseRepository;
 
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+
+    @Transactional
     public User findOrCreateUser(String email, String name) {
+        logger.info("findOrCreateUser called with email: {} and name: {}", email, name);
+
         return userRepository.findByEmail(email)
                 .orElseGet(() -> {
+                    logger.debug("User not found, creating new user");
+
                     User newUser = new User();
                     newUser.setEmail(email);
                     newUser.setName(name);
-                    return userRepository.save(newUser);
+
+                    User savedUser = userRepository.save(newUser);
+                    logger.info("New user created with id: {}", savedUser.getId());
+
+                    return savedUser;
                 });
     }
 
