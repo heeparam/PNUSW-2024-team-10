@@ -1,4 +1,4 @@
-import 'package:heron/theme/label.dart';
+import 'package:heron/widgets/theme/label.dart';
 import 'package:heron/utilities/ripple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,7 +13,6 @@ class HeronApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp.router(
       title: 'Heron',
       themeMode: ThemeMode.system,
@@ -99,7 +98,7 @@ class MaterialTheme {
   }
 
   static ThemeData light() {
-    return theme(lightScheme());
+    return theme(lightScheme(), labelColors);
   }
 
   static ColorScheme darkScheme() {
@@ -126,7 +125,7 @@ class MaterialTheme {
       onSurface: Color(0xffe0e2ed),
       onSurfaceVariant: Color(0xffc1c6d7),
       outline: Color(0xff8b90a0),
-      outlineVariant: Color(0x12c1c6d7),
+      outlineVariant: Color(0x1ac1c6d7),
       shadow: Color(0xff000000),
       scrim: Color(0xff000000),
       inverseSurface: Color(0xffe0e2ed),
@@ -154,7 +153,7 @@ class MaterialTheme {
   }
 
   static ThemeData dark() {
-    return theme(darkScheme());
+    return theme(darkScheme(), darkLabelColors);
   }
 
   static const textTheme = TextTheme(
@@ -232,78 +231,80 @@ class MaterialTheme {
     ),
   );
 
-  static ThemeData theme(ColorScheme colorScheme) => ThemeData(
-    fontFamily: "Pretendard",
-    useMaterial3: true,
-    brightness: colorScheme.brightness,
-    colorScheme: colorScheme,
-    textTheme: textTheme,
-    scaffoldBackgroundColor: colorScheme.surface,
-    canvasColor: colorScheme.surface,
-    extensions: const [
-      labelColors,
-    ],
-    iconButtonTheme: IconButtonThemeData(
-      style: ButtonStyle(
-        splashFactory: HeronRipple.splashFactory,
-        shadowColor: WidgetStateProperty.all(Colors.transparent),
-        overlayColor: WidgetStateProperty.all(
-          colorScheme.onSurface.withOpacity(0.05),
+  static ThemeData theme(ColorScheme colorScheme,
+      HeronLabelColors labelColors,) =>
+      ThemeData(
+        fontFamily: "Pretendard",
+        useMaterial3: true,
+        brightness: colorScheme.brightness,
+        colorScheme: colorScheme,
+        textTheme: textTheme,
+        scaffoldBackgroundColor: colorScheme.surface,
+        canvasColor: colorScheme.surface,
+        extensions: [
+          labelColors,
+        ],
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+            splashFactory: HeronRipple.splashFactory,
+            shadowColor: WidgetStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(
+              colorScheme.onSurface.withOpacity(0.05),
+            ),
+          ),
         ),
-      ),
-    ),
-    tabBarTheme: TabBarTheme(
-      splashFactory: NoSplash.splashFactory,
-      overlayColor: WidgetStateProperty.all(Colors.transparent),
-      indicatorColor: colorScheme.primary,
-      labelColor: colorScheme.primary,
-      unselectedLabelColor: colorScheme.outline,
-      indicator: UnderlineTabIndicator(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(2),
-          topRight: Radius.circular(2),
+        tabBarTheme: TabBarTheme(
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          indicatorColor: colorScheme.primary,
+          labelColor: colorScheme.primary,
+          unselectedLabelColor: colorScheme.outline,
+          indicator: UnderlineTabIndicator(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(2),
+              topRight: Radius.circular(2),
+            ),
+            borderSide: BorderSide(
+              color: colorScheme.primary,
+              width: 3,
+            ),
+          ),
         ),
-        borderSide: BorderSide(
-          color: colorScheme.primary,
-          width: 3,
+        switchTheme: SwitchThemeData(
+          trackOutlineWidth: WidgetStateProperty.all(1.0),
+          thumbColor: WidgetStateProperty.resolveWith(
+                (states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.outlineVariant;
+              }
+              if (states.contains(WidgetState.selected)) {
+                return colorScheme.onPrimaryContainer;
+              }
+              return colorScheme.outline;
+            },
+          ),
+          trackColor: WidgetStateProperty.resolveWith(
+                (states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.surfaceContainerHighest;
+              }
+              if (states.contains(WidgetState.selected)) {
+                return colorScheme.primaryContainer;
+              }
+              return colorScheme.outline.withOpacity(0.1);
+            },
+          ),
+          trackOutlineColor: WidgetStateProperty.resolveWith(
+                (states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.outlineVariant;
+              }
+              if (states.contains(WidgetState.selected)) {
+                return colorScheme.primaryContainer;
+              }
+              return colorScheme.outline.withOpacity(0.7);
+            },
+          ),
         ),
-      ),
-    ),
-    switchTheme: SwitchThemeData(
-      trackOutlineWidth: WidgetStateProperty.all(1.0),
-      thumbColor: WidgetStateProperty.resolveWith(
-            (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return colorScheme.outlineVariant;
-          }
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.onPrimaryContainer;
-          }
-          return colorScheme.outline;
-        },
-      ),
-      trackColor: WidgetStateProperty.resolveWith(
-            (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return colorScheme.surfaceContainerHighest;
-          }
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.primaryContainer;
-          }
-          return colorScheme.outline.withOpacity(0.1);
-        },
-      ),
-      trackOutlineColor: WidgetStateProperty.resolveWith(
-            (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return colorScheme.outlineVariant;
-          }
-          if (states.contains(WidgetState.selected)) {
-            return colorScheme.primaryContainer;
-          }
-          return colorScheme.outline.withOpacity(0.7);
-        },
-      ),
-    ),
-  );
+      );
 }

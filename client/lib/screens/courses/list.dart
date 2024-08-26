@@ -190,7 +190,7 @@ class CourseListItem extends HeronListItem {
               ),
             ],
           ),
-          const SizedBox(height: 6.0),
+          const SizedBox(height: 10.0),
           RichText(
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -200,12 +200,14 @@ class CourseListItem extends HeronListItem {
                   text: "${l10n.coursesLandmark.toUpperCase()}  ",
                   style: textTheme.labelMedium!.copyWith(
                     fontWeight: FontWeight.w700,
+                    height: 1,
                   ),
                 ),
                 TextSpan(
                   text: landmark,
                   style: textTheme.labelMedium!.copyWith(
                     color: colorScheme.primary,
+                    height: 1,
                   ),
                 ),
               ],

@@ -1,4 +1,4 @@
-import 'package:heron/theme/label.dart';
+import 'package:heron/widgets/theme/label.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum HeronPlaceZoneType {

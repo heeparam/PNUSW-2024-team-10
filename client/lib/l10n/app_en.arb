@@ -39,6 +39,10 @@
   "coursesLandmark": "Landmark",
 
   "coursesDetailHeader": "Course",
+  "coursesDetailItinerary": "Itinerary",
+  "coursesDetailMap": "Map",
+  "coursesDetailSuggestTime": "Suggested Time",
+  "coursesDetailMission": "Mission",
 
   "profileCourseCount": "{count} courses finished",
   "@profileCourseCount": {

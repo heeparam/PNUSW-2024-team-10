@@ -52,6 +52,7 @@ class HeronListGroup extends StatelessWidget {
                       Divider(
                         color: colorScheme.outlineVariant,
                         height: 1.0,
+                        thickness: 1.0,
                         indent: dividerIndent,
                         endIndent: dividerEndIndent,
                       ),

@@ -39,6 +39,10 @@
   "coursesLandmark": "랜드마크",
 
   "coursesDetailHeader": "코스",
+  "coursesDetailItinerary": "일정",
+  "coursesDetailMap": "지도",
+  "coursesDetailSuggestTime": "진행 시각",
+  "coursesDetailMission": "미션",
 
   "profileCourseCount": "코스 {count}개 완료",
   "profileMissionCount": "미션 {count}개 완료",
