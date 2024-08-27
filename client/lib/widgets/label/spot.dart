@@ -3,7 +3,7 @@ import 'package:heron/widgets/label/label.dart';
 import 'package:heron/models/map/types.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HeronSpotThemeLabel extends StatelessWidget {
+class HeronSpotThemeLabel extends HeronLabel {
   final HeronTourSpotThemeType type;
 
   const HeronSpotThemeLabel(this.type, {super.key});

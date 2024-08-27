@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:heron/models/map/types.dart';
 import 'package:heron/widgets/list/items.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:heron/widgets/place/place.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class ItineraryListItem extends HeronListItem {
+  final HeronPlaceType type;
   final String placeId;
   final String title;
   final String description;
@@ -13,6 +16,7 @@ class ItineraryListItem extends HeronListItem {
 
   const ItineraryListItem({
     super.key,
+    required this.type,
     required this.placeId,
     required this.title,
     required this.description,
@@ -29,7 +33,33 @@ class ItineraryListItem extends HeronListItem {
 
     return HeronPressableListItem(
       padding: const EdgeInsets.all(10.0),
-      onPressed: () {},
+      onPressed: () {
+        // TODO: 연동 후 정확한 데이터 삽입
+        if (type == HeronPlaceType.tourSpot) {
+          showHeronTourSpotSheet(
+            context: context,
+            placeId: "ChIJUV0TbriSaDURK4AmxXitluY",
+            name: "Busan Museum of Art",
+            address: "58, APEC-ro, Haeundae-gu, Busan",
+            themes: [
+              HeronTourSpotThemeType.culture,
+            ],
+            zone: HeronPlaceZoneType.haeundae,
+          );
+        } else if (type == HeronPlaceType.food) {
+          showHeronFoodSheet(
+            context: context,
+            placeId: "ChIJwek01K2SaDURtJMgxNliEKE",
+            name: "Oreok",
+            address: "51, Marine city 3-ro, Haeundae-gu, Busan",
+            menu: "Beef bone soup",
+            labels: [
+              HeronFoodType.single,
+            ],
+            zone: HeronPlaceZoneType.haeundae,
+          );
+        }
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -30,7 +30,7 @@ class HeronListGroup extends StatelessWidget {
         children: [
           if (header != null)
             HeronListGroupLabel(
-              header,
+              header!.toUpperCase(),
               indent: labelIndent,
             ),
           Container(
@@ -63,7 +63,7 @@ class HeronListGroup extends StatelessWidget {
           ),
           if (footer != null)
             HeronListGroupLabel(
-              footer,
+              footer!.toUpperCase(),
               indent: labelIndent,
             ),
         ],

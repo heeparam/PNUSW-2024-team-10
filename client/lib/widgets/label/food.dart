@@ -3,7 +3,7 @@ import 'package:heron/widgets/label/label.dart';
 import 'package:heron/models/map/types.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HeronFoodLabel extends StatelessWidget {
+class HeronFoodLabel extends HeronLabel {
   final HeronFoodType type;
 
   const HeronFoodLabel(this.type, {super.key});

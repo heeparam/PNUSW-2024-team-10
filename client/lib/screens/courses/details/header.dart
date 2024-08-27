@@ -65,14 +65,14 @@ class CourseDetailsHeader extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   height: (diviceWidth - 32) * (9 / 16),
-                  color: colorScheme.surfaceDim,
+                  color: colorScheme.surfaceDim.withOpacity(0.5),
                   child: imageSrc != null
                       ? Image.network(
-                    imageSrc!,
-                    width: double.infinity,
-                    height: (diviceWidth - 32) * (9 / 16),
-                    fit: BoxFit.cover,
-                  )
+                          imageSrc!,
+                          width: double.infinity,
+                          height: (diviceWidth - 32) * (9 / 16),
+                          fit: BoxFit.cover,
+                        )
                       : null,
                 ),
               ),

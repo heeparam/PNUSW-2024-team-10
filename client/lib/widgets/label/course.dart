@@ -3,7 +3,7 @@ import 'package:heron/widgets/label/label.dart';
 import 'package:heron/models/courses/types.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HeronCourseStatusLabel extends StatelessWidget {
+class HeronCourseStatusLabel extends HeronLabel {
   final HeronCourseStatusType type;
 
   const HeronCourseStatusLabel(this.type, {super.key});

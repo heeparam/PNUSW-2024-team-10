@@ -102,7 +102,7 @@ class CourseListItem extends HeronListItem {
   final List<HeronPlaceZoneType> zones;
   final HeronCourseDurationType duration;
   final HeronCourseStatusType? status;
-  final String? imageSrc;
+  final String imageSrc;
   final String landmark;
 
   const CourseListItem({
@@ -112,7 +112,7 @@ class CourseListItem extends HeronListItem {
     required this.zones,
     required this.duration,
     this.status,
-    this.imageSrc,
+    required this.imageSrc,
     required this.landmark,
   });
 
@@ -135,18 +135,15 @@ class CourseListItem extends HeronListItem {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(3.0),
-                child: imageSrc != null
-                    ? Image.network(
-                        imageSrc!,
-                        width: 100.0,
-                        height: 100.0,
-                        fit: BoxFit.cover,
-                      )
-                    : Container(
-                        width: 100.0,
-                        height: 100.0,
-                        color: colorScheme.surface,
-                      ),
+                child: Container(
+                  color: colorScheme.surfaceDim.withOpacity(0.5),
+                  child: Image.network(
+                    imageSrc,
+                    width: 100.0,
+                    height: 100.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               const SizedBox(width: 10.0),
               Expanded(

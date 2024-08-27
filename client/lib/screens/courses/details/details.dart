@@ -3,9 +3,11 @@ import 'package:heron/models/courses/types.dart';
 import 'package:heron/models/map/types.dart';
 import 'package:heron/screens/courses/details/header.dart';
 import 'package:heron/screens/courses/details/list.dart';
+import 'package:heron/screens/courses/details/map.dart';
 import 'package:heron/widgets/appbar/appbar.dart';
 import 'package:heron/widgets/button/button.dart';
 import 'package:heron/widgets/button/icon.dart';
+import 'package:heron/widgets/list/items.dart';
 import 'package:heron/widgets/list/list.dart';
 import 'package:heron/widgets/scroll/scroll.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -58,7 +60,7 @@ class CourseDetailsScreen extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: EdgeInsets.only(
-                      bottom: bottomPadding + 80.0,
+                      bottom: bottomPadding + 110.0,
                     ),
                     child: Column(
                       children: [
@@ -67,6 +69,16 @@ class CourseDetailsScreen extends StatelessWidget {
                           labelIndent: 10.0,
                           dividerIndent: 0.0,
                           children: _exampleItineraryList,
+                        ),
+                        HeronListGroup(
+                          header: l10n.coursesDetailMap,
+                          labelIndent: 10.0,
+                          children: const [
+                            HeronListItem(
+                              padding: EdgeInsets.zero,
+                              child: CourseDetailsMap(),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -117,6 +129,7 @@ class CourseDetailsScreen extends StatelessWidget {
 
 const List<ItineraryListItem> _exampleItineraryList = [
   ItineraryListItem(
+    type: HeronPlaceType.food,
     placeId: "1",
     title: "Oreok",
     description: "Beef bone soup",
@@ -124,6 +137,7 @@ const List<ItineraryListItem> _exampleItineraryList = [
     endTime: TimeOfDay(hour: 12, minute: 30),
   ),
   ItineraryListItem(
+    type: HeronPlaceType.tourSpot,
     placeId: "2",
     title: "Busan Museum of Art",
     description:
@@ -133,6 +147,7 @@ const List<ItineraryListItem> _exampleItineraryList = [
     mission: "Find BTS RM's signature in \"Lee Woo Hwan Space.\"",
   ),
   ItineraryListItem(
+    type: HeronPlaceType.tourSpot,
     placeId: "3",
     title: "Busan Cinema Center",
     description:
@@ -142,6 +157,7 @@ const List<ItineraryListItem> _exampleItineraryList = [
     mission: "Book a movie or program you want to see yourself.",
   ),
   ItineraryListItem(
+    type: HeronPlaceType.tourSpot,
     placeId: "4",
     title: "Shinsegae (Centum City)",
     description:
@@ -150,6 +166,7 @@ const List<ItineraryListItem> _exampleItineraryList = [
     endTime: TimeOfDay(hour: 18, minute: 10),
   ),
   ItineraryListItem(
+    type: HeronPlaceType.food,
     placeId: "5",
     title: "Haeundae Wonjo Halmae Gukbab",
     description: "Beef and Rice soup",
@@ -157,6 +174,7 @@ const List<ItineraryListItem> _exampleItineraryList = [
     endTime: TimeOfDay(hour: 19, minute: 0),
   ),
   ItineraryListItem(
+    type: HeronPlaceType.tourSpot,
     placeId: "6",
     title: "Gunam-ro",
     description:
@@ -165,6 +183,7 @@ const List<ItineraryListItem> _exampleItineraryList = [
     endTime: TimeOfDay(hour: 20, minute: 0),
   ),
   ItineraryListItem(
+    type: HeronPlaceType.tourSpot,
     placeId: "7",
     title: "Haeundae Beach",
     description:

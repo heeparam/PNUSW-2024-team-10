@@ -95,8 +95,6 @@ class HeronToggleListItem extends HeronPressableListItem {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return HeronPressableListItem(
       padding: padding.copyWith(right: 8.0),
       onPressed: () {
