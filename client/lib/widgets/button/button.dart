@@ -138,8 +138,8 @@ class _HeronButtonState extends State<HeronButton> {
                   highlightColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   splashFactory: HeronRipple.splashFactory,
-                  onTapDown: (isPressable)
-                      ? (details) {
+                  onTap: isPressable
+                      ? () {
                           widget.onPressed?.call();
                         }
                       : null,

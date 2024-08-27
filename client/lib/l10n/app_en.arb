@@ -2,6 +2,10 @@
   "commonConfirmationYes": "Yes",
   "commonConfirmationNo": "No",
 
+  "signInToContinue": "Enjoy your life in Busan\nwith Heron!",
+  "signInWithGoogle": "Sign in with Google",
+  "signInWithApple": "Sign in with Apple",
+
   "placeZoneHaeundae": "Haeundae/Gwangalli",
   "placeZoneDowntown": "Original Downtown",
   "placeZoneGijang": "Gijang",

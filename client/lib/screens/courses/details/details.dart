@@ -10,6 +10,7 @@ import 'package:heron/widgets/button/icon.dart';
 import 'package:heron/widgets/list/items.dart';
 import 'package:heron/widgets/list/list.dart';
 import 'package:heron/widgets/scroll/scroll.dart';
+import 'package:heron/widgets/signin/signin.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -32,7 +33,9 @@ class CourseDetailsScreen extends StatelessWidget {
           hideTitleOnTop: true,
           actions: [
             HeronIconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSignInSheet(context: context);
+              },
               icon: const Icon(HugeIcons.strokeRoundedFavourite),
             ),
           ],
@@ -112,7 +115,9 @@ class CourseDetailsScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: HeronButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showSignInSheet(context: context);
+                        },
                         child: const Text("Start This Course"),
                       ),
                     ),

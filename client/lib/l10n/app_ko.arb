@@ -2,6 +2,10 @@
   "commonConfirmationYes": "예",
   "commonConfirmationNo": "아니요",
 
+  "signInToContinue": "부산 생활,\nHeron과 함께 즐겨보아요!",
+  "signInWithGoogle": "Google로 로그인",
+  "signInWithApple": "Apple로 로그인",
+
   "placeZoneHaeundae": "해운대/광안리",
   "placeZoneDowntown": "원도심",
   "placeZoneGijang": "기장",
