@@ -136,7 +136,7 @@ class CourseListItem extends HeronListItem {
               ClipRRect(
                 borderRadius: BorderRadius.circular(3.0),
                 child: Container(
-                  color: colorScheme.surfaceDim.withOpacity(0.5),
+                  color: colorScheme.surfaceContainerHigh,
                   child: Image.network(
                     imageSrc,
                     width: 100.0,

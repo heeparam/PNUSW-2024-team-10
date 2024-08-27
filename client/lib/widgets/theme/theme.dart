@@ -36,11 +36,11 @@ const labelColors = HeronLabelColors(
 
 const darkLabelColors = HeronLabelColors(
   gray: Color(0xFF565656),
-  red: Color(0xFF6E1D1D),
-  green: Color(0xFF546E1D),
-  blue: Color(0xFF1D476E),
-  yellow: Color(0xFF6E501D),
-  purple: Color(0xFF541D6E),
+  red: Color(0xFF683535),
+  green: Color(0xFF5A6C35),
+  blue: Color(0xFF36526C),
+  yellow: Color(0xFF6E5A38),
+  purple: Color(0xFF5D396E),
 );
 
 class MaterialTheme {

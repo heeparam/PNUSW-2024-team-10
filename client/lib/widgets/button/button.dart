@@ -70,14 +70,18 @@ class _HeronButtonState extends State<HeronButton> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     final buttonColor = widget.color ??
         (widget.variant == HeronButtonVariant.primary
-            ? Theme.of(context).colorScheme.primaryContainer
-            : Theme.of(context).colorScheme.surfaceBright);
+            ? colorScheme.primaryContainer
+            : colorScheme.brightness == Brightness.light
+                ? colorScheme.surfaceBright
+                : const Color(0xFF424656));
 
     final textColor = widget.variant == HeronButtonVariant.primary
-        ? Theme.of(context).colorScheme.onPrimaryContainer
-        : Theme.of(context).colorScheme.onSurface;
+        ? colorScheme.onPrimaryContainer
+        : colorScheme.onSurface;
 
     final borderColor =
         Color.alphaBlend(buttonColor.withOpacity(0.8), Colors.black);

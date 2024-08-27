@@ -80,7 +80,7 @@ class ItineraryListItem extends HeronListItem {
                 width: 100.0,
                 height: 80.0,
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceDim.withOpacity(0.5),
+                  color: colorScheme.surfaceContainerHigh,
                   borderRadius: BorderRadius.circular(4.0),
                 ),
                 child: HugeIcon(
