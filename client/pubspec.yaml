@@ -46,6 +46,7 @@ dependencies:
   float_column: ^2.1.8
   fluttertoast: ^8.2.8
   snapping_bottom_sheet: ^1.0.4
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:

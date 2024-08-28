@@ -14,21 +14,17 @@ void showFilterSheet(
   final colorScheme = Theme.of(context).colorScheme;
   final l10n = AppLocalizations.of(context)!;
 
-  final deviceHeight = MediaQuery.of(context).size.height;
   final devicePadding = MediaQueryData.fromView(View.of(context)).padding;
-
-  final maxSheetHeight =
-      (deviceHeight - devicePadding.top - 16.0) / deviceHeight;
 
   showSnappingBottomSheet(
     context,
     builder: (context) => SnappingBottomSheetDialog(
       cornerRadius: 10.0,
       duration: const Duration(milliseconds: 300),
-      snapSpec: SnapSpec(
+      snapSpec: const SnapSpec(
         snap: true,
-        initialSnap: 0.5,
-        snappings: [0.5, maxSheetHeight],
+        initialSnap: 0.9,
+        snappings: [0.9],
         positioning: SnapPositioning.relativeToAvailableSpace,
       ),
       scrollSpec: const ScrollSpec(

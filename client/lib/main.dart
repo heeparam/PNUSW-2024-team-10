@@ -1,12 +1,15 @@
 import 'package:go_router/go_router.dart';
+import 'package:heron/constants/preferences.dart';
 import 'package:heron/screens/courses/details/details.dart';
 import 'package:heron/screens/home.dart';
 import 'package:heron/screens/profile/settings/settings.dart';
-import 'package:heron/widgets/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:heron/widgets/restart/restart.dart';
+import 'package:heron/widgets/theme/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const RestartWidget(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,8 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HeronApp(
-      routerConfig: _router,
+    final languageCode = SharedPreferences.getInstance()
+        .then((prefs) => prefs.getString(kPrefLanguage));
+
+    return FutureBuilder(
+      future: languageCode,
+      builder: (context, snapshot) => HeronApp(
+        routerConfig: _router,
+        locale: snapshot.hasData ? Locale(snapshot.data!) : null,
+      ),
     );
   }
 }

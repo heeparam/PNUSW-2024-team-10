@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heron/screens/map/filter.dart';
 import 'package:heron/widgets/chip/chip.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MapFilterOverlay extends StatelessWidget {
   const MapFilterOverlay({super.key});
@@ -9,6 +10,7 @@ class MapFilterOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final topMargin = MediaQuery.of(context).padding.top;
+    final l10n = AppLocalizations.of(context)!;
 
     return Positioned(
       top: topMargin + 8.0,
@@ -38,7 +40,7 @@ class MapFilterOverlay extends StatelessWidget {
                 selected: true,
                 onSelect: (selected) {},
                 height: 40.0,
-                child: const Text("Tour Spot"),
+                child: Text(l10n.mapTourSpot),
               ),
               const SizedBox(width: 10.0),
               HeronFilterChip(
@@ -47,7 +49,7 @@ class MapFilterOverlay extends StatelessWidget {
                 selected: true,
                 onSelect: (selected) {},
                 height: 40.0,
-                child: const Text("Food"),
+                child: Text(l10n.mapFood),
               ),
             ],
           ),

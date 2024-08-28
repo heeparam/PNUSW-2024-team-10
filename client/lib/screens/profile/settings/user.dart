@@ -1,3 +1,4 @@
+import 'package:heron/screens/profile/settings/language.dart';
 import 'package:heron/widgets/list/items.dart';
 import 'package:heron/widgets/list/list.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +15,15 @@ class HeronUserSettingsList extends StatelessWidget {
       header: l10n.settingsUserLabel,
       children: [
         HeronNavigationListItem(
-          onPressed: () {
+          onPressed: () async {
             // alert dialog
+            showLanguageSelectorDialog(context);
           },
           child: Text(l10n.settingsUserLanguage),
         ),
         HeronPressableListItem(
           onPressed: () {
             // alert dialog
-
           },
           child: Text(
             l10n.settingsUserSignOut,

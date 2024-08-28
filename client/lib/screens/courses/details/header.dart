@@ -51,7 +51,7 @@ class CourseDetailsHeader extends StatelessWidget {
                       WidgetSpan(
                         child: HeronLabel(
                           child: Text(
-                            HeronCourseDurationType.oneDay.getDisplayText(l10n),
+                            HeronCourseDurationType.oneDay.getDisplayText(l10n).toUpperCase(),
                           ),
                         ),
                       ),

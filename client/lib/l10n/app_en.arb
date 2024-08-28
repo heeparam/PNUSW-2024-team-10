@@ -2,6 +2,9 @@
   "commonConfirmationYes": "Yes",
   "commonConfirmationNo": "No",
 
+  "commonConfirmationApply": "Apply",
+  "commonConfirmationCancel": "Cancel",
+
   "filterTitle": "Filter",
   "filterApply": "Apply",
   "filterReset": "Reset",
@@ -43,7 +46,7 @@
 
   "coursesTabAll": "All",
   "coursesTabLiked": "Liked",
-  "coursesTabDone": "Completed",
+  "coursesTabDone": "Done",
 
   "coursesFilterZone": "Zone",
   "coursesFilterTheme": "Theme",

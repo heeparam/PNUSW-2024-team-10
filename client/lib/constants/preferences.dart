@@ -1,0 +1,1 @@
+const kPrefLanguage = 'language';

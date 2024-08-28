@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeronApp extends StatelessWidget {
+  final Locale? locale;
   final RouterConfig<Object> routerConfig;
 
   const HeronApp({
     super.key,
+    this.locale,
     required this.routerConfig,
   });
 
@@ -18,6 +20,7 @@ class HeronApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MaterialTheme.light(),
       darkTheme: MaterialTheme.dark(),
+      locale: locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: routerConfig,

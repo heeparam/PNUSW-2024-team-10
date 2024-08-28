@@ -2,6 +2,9 @@
   "commonConfirmationYes": "예",
   "commonConfirmationNo": "아니요",
 
+  "commonConfirmationApply": "적용",
+  "commonConfirmationCancel": "취소",
+
   "filterTitle": "필터",
   "filterApply": "적용",
   "filterReset": "초기화",

@@ -20,7 +20,7 @@ class SettingsScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           controller: scrollController,
-          child: Column(
+          child: const Column(
             children: [
               HeronUserSettingsList(),
               HeronAppInfoList(),
