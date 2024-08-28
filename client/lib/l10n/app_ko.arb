@@ -1,0 +1,95 @@
+{
+  "commonConfirmationYes": "예",
+  "commonConfirmationNo": "아니요",
+
+  "commonConfirmationApply": "적용",
+  "commonConfirmationCancel": "취소",
+
+  "filterTitle": "필터",
+  "filterApply": "적용",
+  "filterReset": "초기화",
+  "filterSelectAll": "모두 선택",
+  "filterUnselectAll": "모두 해제",
+
+  "signInToContinue": "부산 생활,\nHeron과 함께 즐겨보아요!",
+  "signInWithGoogle": "Google로 로그인",
+  "signInWithApple": "Apple로 로그인",
+
+  "mapTourSpot": "관광지",
+  "mapFood": "식당",
+
+  "placeFilterTheme": "관광지 테마",
+  "placeFilterRestaurantType": "식당 종류",
+
+  "placeZoneHaeundae": "해운대/광안리",
+  "placeZoneDowntown": "원도심",
+  "placeZoneGijang": "기장",
+
+  "placeMore": "더보기",
+  "placeCopiedMessage": "클립보드에 복사하였습니다!",
+
+  "tourSpotThemeHistory": "역사",
+  "tourSpotThemeNature": "자연",
+  "tourSpotThemeCulture": "문화",
+  "tourSpotThemeShopping": "쇼핑",
+
+  "foodVegan": "채식",
+  "foodBlueRibbon": "블루 리본",
+  "foodHalal": "할랄",
+  "foodMichelin": "미쉐린 가이드",
+  "foodSingle": "1인석",
+
+  "navigationLabelMap": "지도",
+  "navigationLabelCourses": "코스",
+  "navigationLabelInfo": "정보",
+  "navigationLabelProfile": "프로필",
+
+  "coursesTabAll": "전체",
+  "coursesTabLiked": "좋아요",
+  "coursesTabDone": "완료",
+
+  "coursesFilterZone": "지역",
+  "coursesFilterTheme": "테마",
+
+  "coursesListHeaderNow": "진행 중인 코스",
+  "coursesListHeaderAll": "모든 코스",
+
+  "coursesStatusNow": "진행 중",
+  "coursesStatusLiked": "좋아요",
+  "coursesStatusDone": "완료",
+
+  "coursesDurationOneDay": "당일치기",
+  "coursesDurationOverNight": "1박 2일",
+
+  "coursesLandmark": "랜드마크",
+
+  "coursesDetailHeader": "코스",
+  "coursesDetailItinerary": "일정",
+  "coursesDetailMap": "지도",
+  "coursesDetailSuggestTime": "진행 시각",
+  "coursesDetailMission": "미션",
+  "coursesDetailStart": "코스 시작하기",
+
+  "profileCourseCount": "코스 {count}개 완료",
+  "profileMissionCount": "미션 {count}개 완료",
+  "profileGalleryHeader": "촬영한 사진",
+  "profileGalleryEmpty": "코스를 진행하며 사진을 찍어보세요!",
+
+  "settingsTitle": "설정",
+
+  "settingsUserLabel": "사용자",
+  "settingsUserSignOut": "로그아웃",
+  "settingsUserSignOutConfirmation": "정말로 로그아웃하시겠습니까?",
+  "settingsUserSignOutSuccess": "로그아웃되었습니다.",
+  "settingsUserLanguage": "언어 변경",
+  "settingsUserLanguageSystem": "시스템 기본값",
+  "settingsUserLanguageEnglish": "영어 (English)",
+  "settingsUserLanguageKorean": "한국어",
+
+
+  "settingsAppInfoLabel": "정보",
+  "settingsAppInfoVersion": "버전",
+  "settingsAppInfoTermsAndPolicy": "약관 및 정책",
+  "settingsAppInfoLicenses": "오픈소스 라이선스",
+  "settingsAppInfoRepository": "GitHub 저장소 보기"
+}

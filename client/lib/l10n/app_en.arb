@@ -1,0 +1,112 @@
+{
+  "commonConfirmationYes": "Yes",
+  "commonConfirmationNo": "No",
+
+  "commonConfirmationApply": "Apply",
+  "commonConfirmationCancel": "Cancel",
+
+  "filterTitle": "Filter",
+  "filterApply": "Apply",
+  "filterReset": "Reset",
+  "filterSelectAll": "Select All",
+  "filterUnselectAll": "Unselect All",
+
+  "signInToContinue": "Enjoy your life in Busan\nDwith Heron!",
+  "signInWithGoogle": "Sign in with Google",
+  "signInWithApple": "Sign in with Apple",
+
+  "mapTourSpot": "Tour Spot",
+  "mapFood": "Food",
+
+  "placeFilterTheme": "Tour Spot Theme",
+  "placeFilterRestaurantType": "Restaurant Type",
+
+  "placeZoneHaeundae": "Haeundae/Gwangalli",
+  "placeZoneDowntown": "Original Downtown",
+  "placeZoneGijang": "Gijang",
+
+  "placeMore": "more",
+  "placeCopiedMessage": "Copied to clipboard!",
+
+  "tourSpotThemeHistory": "History",
+  "tourSpotThemeNature": "Nature",
+  "tourSpotThemeCulture": "Culture",
+  "tourSpotThemeShopping": "Shopping",
+
+  "foodVegan": "Vegan",
+  "foodBlueRibbon": "Blue Ribbon Survey",
+  "foodHalal": "Halal",
+  "foodMichelin": "Michelin Guide",
+  "foodSingle": "Single Seat",
+
+  "navigationLabelMap": "Map",
+  "navigationLabelCourses": "Courses",
+  "navigationLabelInfo": "Info",
+  "navigationLabelProfile": "Profile",
+
+  "coursesTabAll": "All",
+  "coursesTabLiked": "Liked",
+  "coursesTabDone": "Done",
+
+  "coursesFilterZone": "Zone",
+  "coursesFilterTheme": "Theme",
+
+  "coursesListHeaderNow": "In Progress",
+  "coursesListHeaderAll": "All Courses",
+
+  "coursesStatusNow": "In Progress",
+  "coursesStatusLiked": "Liked",
+  "coursesStatusDone": "Completed",
+
+  "coursesDurationOneDay": "Day Trip",
+  "coursesDurationOverNight": "Overnight",
+
+  "coursesLandmark": "Landmark",
+
+  "coursesDetailHeader": "Course",
+  "coursesDetailItinerary": "Itinerary",
+  "coursesDetailMap": "Map",
+  "coursesDetailSuggestTime": "Suggested Time",
+  "coursesDetailMission": "Mission",
+  "coursesDetailStart": "Start This Course",
+
+  "profileCourseCount": "{count} courses finished",
+  "@profileCourseCount": {
+    "description": "The number of courses the user has completed",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "profileMissionCount": "{count} missions completed",
+  "@profileMissionCount": {
+    "description": "The number of missions the user has completed",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "profileGalleryHeader": "Gallery",
+  "profileGalleryEmpty": "Take a photo while progressing through the course!",
+
+  "settingsTitle": "Settings",
+
+  "settingsUserLabel": "User",
+  "settingsUserSignOut": "Sign Out",
+  "settingsUserSignOutConfirmation": "Are you sure you want to sign out?",
+  "settingsUserSignOutSuccess": "Signed out successfully",
+  "settingsUserLanguage": "Change Language",
+  "settingsUserLanguageSystem": "System Default",
+  "settingsUserLanguageEnglish": "English",
+  "settingsUserLanguageKorean": "Korean (한국어)",
+
+  "settingsAppInfoLabel": "Information",
+  "settingsAppInfoVersion": "Version",
+  "settingsAppInfoTermsAndPolicy": "Terms and Policy",
+  "settingsAppInfoLicenses": "Open Source Licenses",
+  "settingsAppInfoRepository": "View GitHub Repository"
+}
