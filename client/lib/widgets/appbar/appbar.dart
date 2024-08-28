@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:heron/widgets/appbar/status.dart';
 import 'package:heron/widgets/button/icon.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -47,11 +48,7 @@ class HeronAppBar extends StatelessWidget implements PreferredSizeWidget {
             (scrollOffsetEnd - scrollOffsetStart))
         .clamp(0.0, 1.0);
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarBrightness: colorScheme.brightness,
-      ),
+    return StatusBarColor(
       child: Stack(
         children: [
           Positioned(

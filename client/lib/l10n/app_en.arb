@@ -12,6 +12,12 @@
   "signInWithGoogle": "Sign in with Google",
   "signInWithApple": "Sign in with Apple",
 
+  "mapTourSpot": "Tour Spot",
+  "mapFood": "Food",
+
+  "placeFilterTheme": "Tour Spot Theme",
+  "placeFilterRestaurantType": "Restaurant Type",
+
   "placeZoneHaeundae": "Haeundae/Gwangalli",
   "placeZoneDowntown": "Original Downtown",
   "placeZoneGijang": "Gijang",

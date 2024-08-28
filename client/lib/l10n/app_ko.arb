@@ -12,6 +12,12 @@
   "signInWithGoogle": "Google로 로그인",
   "signInWithApple": "Apple로 로그인",
 
+  "mapTourSpot": "관광지",
+  "mapFood": "식당",
+
+  "placeFilterTheme": "관광지 테마",
+  "placeFilterRestaurantType": "식당 종류",
+
   "placeZoneHaeundae": "해운대/광안리",
   "placeZoneDowntown": "원도심",
   "placeZoneGijang": "기장",

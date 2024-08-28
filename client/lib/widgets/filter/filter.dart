@@ -85,29 +85,33 @@ void showFilterSheet(
           ],
         ),
       ),
-      footerBuilder: (context, sheetState) => Container(
-        color: colorScheme.surfaceBright,
-        height: 80 + devicePadding.bottom,
-        padding: EdgeInsets.only(
-          left: 20.0,
-          right: 20.0,
-          bottom: devicePadding.bottom,
-        ),
-        alignment: Alignment.center,
-        child: HeronButton(
-          onPressed: () {
-            onApply();
-            Navigator.of(context).pop();
-          },
-          child: Text(l10n.filterApply),
-        ),
-      ),
       builder: (contxt, sheetState) => Container(
         color: colorScheme.surfaceBright,
-        padding: const EdgeInsets.only(bottom: 24.0),
         child: Material(
           color: Colors.transparent,
-          child: child,
+          child: Column(
+            children: [
+              const SizedBox(height: 8.0),
+              child,
+              Container(
+                color: colorScheme.surfaceBright,
+                padding: EdgeInsets.only(
+                  top: 40.0,
+                  left: 20.0,
+                  right: 20.0,
+                  bottom: devicePadding.bottom + 16.0,
+                ),
+                alignment: Alignment.center,
+                child: HeronButton(
+                  onPressed: () {
+                    onApply();
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(l10n.filterApply),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     ),
