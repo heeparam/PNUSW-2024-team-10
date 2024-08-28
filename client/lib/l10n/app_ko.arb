@@ -2,6 +2,12 @@
   "commonConfirmationYes": "예",
   "commonConfirmationNo": "아니요",
 
+  "filterTitle": "필터",
+  "filterApply": "적용",
+  "filterReset": "초기화",
+  "filterSelectAll": "모두 선택",
+  "filterUnselectAll": "모두 해제",
+
   "signInToContinue": "부산 생활,\nHeron과 함께 즐겨보아요!",
   "signInWithGoogle": "Google로 로그인",
   "signInWithApple": "Apple로 로그인",
@@ -32,6 +38,9 @@
   "coursesTabAll": "전체",
   "coursesTabLiked": "좋아요",
   "coursesTabDone": "완료",
+
+  "coursesFilterZone": "지역",
+  "coursesFilterTheme": "테마",
 
   "coursesListHeaderNow": "진행 중인 코스",
   "coursesListHeaderAll": "모든 코스",

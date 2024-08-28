@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heron/widgets/button/button.dart';
 import 'package:heron/widgets/button/text.dart';
 import 'package:heron/widgets/chip/chip.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -59,14 +60,14 @@ void showFilterSheet(
                     children: [
                       const SizedBox(width: 10.0),
                       Text(
-                        'Filter',
+                        l10n.filterTitle,
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const Spacer(),
                       HeronTextButton(
                         onPressed: onReset,
                         child: Text(
-                          'Reset',
+                          l10n.filterReset,
                           style: TextStyle(color: colorScheme.outline),
                         ),
                       ),
@@ -84,11 +85,26 @@ void showFilterSheet(
           ],
         ),
       ),
+      footerBuilder: (context, sheetState) => Container(
+        color: colorScheme.surfaceBright,
+        height: 80 + devicePadding.bottom,
+        padding: EdgeInsets.only(
+          left: 20.0,
+          right: 20.0,
+          bottom: devicePadding.bottom,
+        ),
+        alignment: Alignment.center,
+        child: HeronButton(
+          onPressed: () {
+            onApply();
+            Navigator.of(context).pop();
+          },
+          child: Text(l10n.filterApply),
+        ),
+      ),
       builder: (contxt, sheetState) => Container(
         color: colorScheme.surfaceBright,
-        padding: EdgeInsets.only(
-          bottom: devicePadding.bottom + 24.0,
-        ),
+        padding: const EdgeInsets.only(bottom: 24.0),
         child: Material(
           color: Colors.transparent,
           child: child,
@@ -119,13 +135,15 @@ class HeronFilterSelector<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
 
     final chipItems = [
       for (var i = 0; i < items.length; i++) builder(i, items[i]),
     ];
 
     final isAllSelected = chipItems.every((item) => item.selected);
-    final selectAllText = isAllSelected ? "Deselect All" : "Select All";
+    final selectAllText =
+        isAllSelected ? l10n.filterUnselectAll : l10n.filterSelectAll;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

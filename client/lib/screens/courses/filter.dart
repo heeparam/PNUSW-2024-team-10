@@ -10,6 +10,8 @@ void showCoursesFilterSheet({
     List<HeronPlaceZoneType> zones,
     List<HeronTourSpotThemeType> themes,
   ) onApply,
+  List<HeronPlaceZoneType>? initialZones,
+  List<HeronTourSpotThemeType>? initialThemes,
 }) {
   final GlobalKey<_FilterSheetBodyState> filterSheetBodyKey =
       GlobalKey<_FilterSheetBodyState>();
@@ -24,6 +26,8 @@ void showCoursesFilterSheet({
     },
     child: FilterSheetBody(
       key: filterSheetBodyKey,
+      initialZones: initialZones,
+      initialThemes: initialThemes,
     ),
     onReset: () {
       filterSheetBodyKey.currentState!.reset();
@@ -32,15 +36,29 @@ void showCoursesFilterSheet({
 }
 
 class FilterSheetBody extends StatefulWidget {
-  const FilterSheetBody({super.key});
+  final List<HeronPlaceZoneType>? initialZones;
+  final List<HeronTourSpotThemeType>? initialThemes;
+
+  const FilterSheetBody({
+    super.key,
+    this.initialZones,
+    this.initialThemes,
+  });
 
   @override
   State<FilterSheetBody> createState() => _FilterSheetBodyState();
 }
 
 class _FilterSheetBodyState extends State<FilterSheetBody> {
-  List<HeronPlaceZoneType> selectedZones = HeronPlaceZoneType.values;
-  List<HeronTourSpotThemeType> selectedThemes = HeronTourSpotThemeType.values;
+  List<HeronPlaceZoneType> selectedZones = [];
+  List<HeronTourSpotThemeType> selectedThemes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    selectedZones = widget.initialZones ?? HeronPlaceZoneType.values;
+    selectedThemes = widget.initialThemes ?? HeronTourSpotThemeType.values;
+  }
 
   void reset() {
     setState(() {
@@ -58,7 +76,7 @@ class _FilterSheetBodyState extends State<FilterSheetBody> {
       mainAxisSize: MainAxisSize.min,
       children: [
         HeronFilterSelector(
-          title: "Zone",
+          title: l10n.coursesFilterZone,
           items: HeronPlaceZoneType.values,
           onSelectAll: () {
             setState(() {
@@ -77,9 +95,10 @@ class _FilterSheetBodyState extends State<FilterSheetBody> {
             onSelect: (selected) {
               setState(() {
                 if (selected) {
-                  selectedZones.add(zone);
+                  selectedZones = [...selectedZones, zone];
                 } else {
-                  selectedZones.remove(zone);
+                  selectedZones =
+                      selectedZones.where((z) => z != zone).toList();
                 }
               });
             },
@@ -87,7 +106,7 @@ class _FilterSheetBodyState extends State<FilterSheetBody> {
         ),
         const SizedBox(height: 24.0),
         HeronFilterSelector(
-          title: "Theme",
+          title: l10n.coursesFilterTheme,
           items: HeronTourSpotThemeType.values,
           onSelectAll: () {
             setState(() {
@@ -106,9 +125,10 @@ class _FilterSheetBodyState extends State<FilterSheetBody> {
             onSelect: (selected) {
               setState(() {
                 if (selected) {
-                  selectedThemes.add(theme);
+                  selectedThemes = [...selectedThemes, theme];
                 } else {
-                  selectedThemes.remove(theme);
+                  selectedThemes =
+                      selectedThemes.where((t) => t != theme).toList();
                 }
               });
             },
