@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:heron/widgets/theme/label.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 enum HeronPlaceType {
   tourSpot,
@@ -7,9 +9,12 @@ enum HeronPlaceType {
 }
 
 enum HeronPlaceZoneType {
-  haeundae,
-  downtown,
-  gijang;
+  haeundae(HugeIcons.strokeRoundedBeach),
+  downtown(HugeIcons.strokeRoundedCity03),
+  gijang(HugeIcons.strokeRoundedMoonLanding);
+
+  const HeronPlaceZoneType(this.icon);
+  final IconData icon;
 
   String getDisplayText(AppLocalizations l10n) {
     switch (this) {
@@ -24,14 +29,16 @@ enum HeronPlaceZoneType {
 }
 
 enum HeronFoodType {
-  vegan(HeronLabelColorType.green),
-  blueribbon(HeronLabelColorType.blue),
-  halal(HeronLabelColorType.yellow),
-  michelin(HeronLabelColorType.red),
-  single(HeronLabelColorType.purple);
+  vegan(HeronLabelColorType.green, HugeIcons.strokeRoundedVegetarianFood),
+  blueribbon(HeronLabelColorType.blue, HugeIcons.strokeRoundedBowTie),
+  halal(HeronLabelColorType.yellow, HugeIcons.strokeRoundedHalal),
+  michelin(HeronLabelColorType.red, HugeIcons.strokeRoundedBookBookmark02),
+  single(HeronLabelColorType.purple, HugeIcons.strokeRoundedSofaSingle);
 
-  const HeronFoodType(this.color);
+  const HeronFoodType(this.color, this.icon);
+
   final HeronLabelColorType color;
+  final IconData icon;
 
   String getDisplayText(AppLocalizations l10n) {
     switch (this) {
@@ -50,13 +57,15 @@ enum HeronFoodType {
 }
 
 enum HeronTourSpotThemeType {
-  history(HeronLabelColorType.yellow),
-  nature(HeronLabelColorType.green),
-  culture(HeronLabelColorType.blue),
-  shopping(HeronLabelColorType.red);
+  history(HeronLabelColorType.yellow, HugeIcons.strokeRoundedClock03),
+  nature(HeronLabelColorType.green, HugeIcons.strokeRoundedNaturalFood),
+  culture(HeronLabelColorType.blue, HugeIcons.strokeRoundedMapsGlobal01),
+  shopping(HeronLabelColorType.red, HugeIcons.strokeRoundedShoppingBasket01);
 
-  const HeronTourSpotThemeType(this.color);
+  const HeronTourSpotThemeType(this.color, this.icon);
+
   final HeronLabelColorType color;
+  final IconData icon;
 
   String getDisplayText(AppLocalizations l10n) {
     switch (this) {

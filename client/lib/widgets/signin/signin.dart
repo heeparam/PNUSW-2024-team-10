@@ -5,6 +5,7 @@ import 'package:heron/widgets/sheet/handle.dart';
 import 'package:heron/widgets/signin/apple.dart';
 import 'package:heron/widgets/signin/google.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:snapping_bottom_sheet/snapping_bottom_sheet.dart';
 
 void showSignInSheet({
   required BuildContext context,
@@ -12,20 +13,28 @@ void showSignInSheet({
   final l10n = AppLocalizations.of(context)!;
   final colorScheme = Theme.of(context).colorScheme;
   final textTheme = Theme.of(context).textTheme;
-  final bottomPadding = MediaQuery.of(context).padding.bottom;
+  final bottomPadding = MediaQueryData.fromView(View.of(context)).padding.bottom;
 
   final backgroundColor = colorScheme.brightness == Brightness.light
       ? colorScheme.primaryContainer
       : colorScheme.surfaceBright;
 
-  showModalBottomSheet(
-    context: context,
-    backgroundColor: backgroundColor,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
-    ),
-    builder: (context) => Wrap(
-      children: [
+  showSnappingBottomSheet(
+    context,
+    builder: (context) => SnappingBottomSheetDialog(
+      duration: const Duration(milliseconds: 300),
+      snapSpec: const SnapSpec(
+        snap: true,
+        initialSnap: 0.9,
+        snappings: [0.9],
+      ),
+      scrollSpec: const ScrollSpec(
+        overscroll: false,
+        physics: ClampingScrollPhysics(),
+      ),
+      color: backgroundColor,
+      cornerRadius: 10.0,
+      builder: (context, _)  =>
         Column(
           children: [
             HeronSheetHandle(
@@ -62,7 +71,6 @@ void showSignInSheet({
             ),
           ],
         ),
-      ],
     ),
   );
 }

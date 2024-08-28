@@ -2,7 +2,7 @@
   "commonConfirmationYes": "Yes",
   "commonConfirmationNo": "No",
 
-  "signInToContinue": "Enjoy your life in Busan\nwith Heron!",
+  "signInToContinue": "Enjoy your life in Busan\nDwith Heron!",
   "signInWithGoogle": "Sign in with Google",
   "signInWithApple": "Sign in with Apple",
 
@@ -32,6 +32,13 @@
   "coursesTabAll": "All",
   "coursesTabLiked": "Liked",
   "coursesTabDone": "Completed",
+
+  "coursesFilterTitle": "Filter",
+  "coursesFilterReset": "Reset",
+  "coursesFilterApply": "Apply",
+  "coursesFilterZone": "Zone",
+  "coursesFilterTheme": "Theme",
+  "coursesFilterSelectAll": "Select All",
 
   "coursesListHeaderNow": "In Progress",
   "coursesListHeaderAll": "All Courses",

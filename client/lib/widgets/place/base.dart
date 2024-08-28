@@ -5,6 +5,7 @@ import 'package:heron/widgets/place/header.dart';
 import 'package:heron/widgets/place/table.dart';
 import 'package:heron/widgets/sheet/handle.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:snapping_bottom_sheet/snapping_bottom_sheet.dart';
 
 void showHeronPlaceSheet({
   required BuildContext context,
@@ -17,22 +18,29 @@ void showHeronPlaceSheet({
 }) {
   final colorScheme = Theme.of(context).colorScheme;
   final textTheme = Theme.of(context).textTheme;
-  final bottomPadding = MediaQuery.of(context).padding.bottom;
+  final bottomPadding = MediaQueryData.fromView(View.of(context)).padding.bottom;
   final imageWidth = MediaQuery.of(context).size.width - 32.0;
   final l10n = AppLocalizations.of(context)!;
 
-  showModalBottomSheet(
-    context: context,
-    backgroundColor: colorScheme.surfaceBright,
-    barrierColor: colorScheme.shadow.withOpacity(0.7),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
-    ),
-    builder: (context) => Wrap(
-      children: [
-        Column(
+  showSnappingBottomSheet(
+    context,
+    builder: (context) => SnappingBottomSheetDialog(
+      snapSpec: const SnapSpec(
+        initialSnap: 0.9,
+        snappings: [0.9],
+      ),
+      color: colorScheme.surfaceBright,
+      cornerRadius: 10.0,
+      duration: const Duration(milliseconds: 300),
+      headerBuilder: (context, _) => const HeronSheetHandle(),
+      scrollSpec: const ScrollSpec(
+        overscroll: false,
+        physics: ClampingScrollPhysics(),
+      ),
+      builder: (context, _) => Material(
+        color: Colors.transparent,
+        child: Column(
           children: [
-            const HeronSheetHandle(),
             Padding(
               padding: EdgeInsets.only(
                 top: 4.0,
@@ -91,7 +99,7 @@ void showHeronPlaceSheet({
             ),
           ],
         ),
-      ],
+      ),
     ),
   );
 }

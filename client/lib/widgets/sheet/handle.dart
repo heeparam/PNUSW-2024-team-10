@@ -13,7 +13,7 @@ class HeronSheetHandle extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      height: 15.0,
       alignment: Alignment.center,
       child: Container(
         width: 36.0,

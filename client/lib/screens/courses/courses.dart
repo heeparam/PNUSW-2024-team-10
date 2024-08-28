@@ -1,5 +1,6 @@
 import 'package:heron/models/courses/types.dart';
 import 'package:heron/models/map/types.dart';
+import 'package:heron/screens/courses/filter.dart';
 import 'package:heron/screens/courses/list.dart';
 import 'package:heron/widgets/appbar/appbar.dart';
 import 'package:heron/widgets/button/icon.dart';
@@ -42,7 +43,10 @@ class CoursesScreen extends StatelessWidget {
                   ),
                   const SizedBox(width: 6.0),
                   HeronIconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showCoursesFilterSheet(
+                          context: context, onApply: (zones, themes) {});
+                    },
                     size: 36.0,
                     icon: Icon(HugeIcons.strokeRoundedFilterHorizontal,
                         color: colorScheme.outline, size: 20.0),
