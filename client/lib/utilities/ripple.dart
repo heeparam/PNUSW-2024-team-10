@@ -169,7 +169,7 @@ class HeronRipple extends InteractiveInkFeature {
     final Paint paint = Paint()..color = color.withAlpha(alpha);
     Rect? rect;
     if (_clipCallback != null) {
-      rect = _clipCallback!();
+      rect = _clipCallback();
     }
     final Offset center = Offset.lerp(
       _position,

@@ -1,4 +1,4 @@
-package dev.insd.client
+package dev.insd.heron
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -23,6 +23,7 @@ class _HeronGoogleMapState extends State<HeronGoogleMap> {
           : _mapStyle,
       compassEnabled: false,
       myLocationButtonEnabled: false,
+      zoomControlsEnabled: false,
     );
   }
 }

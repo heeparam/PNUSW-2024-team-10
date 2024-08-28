@@ -11,7 +11,10 @@ class StatusBarColor extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarBrightness: Theme.of(context).brightness,
+        statusBarIconBrightness:
+            Theme.of(context).brightness == Brightness.light
+                ? Brightness.dark
+                : Brightness.light,
       ),
       child: child,
     );

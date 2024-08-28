@@ -72,7 +72,6 @@ class _HeronNavigationBarItemWidget extends StatefulWidget {
   final void Function()? onSelected;
 
   const _HeronNavigationBarItemWidget({
-    super.key,
     required this.isSelected,
     required this.item,
     this.onSelected,
@@ -194,14 +193,14 @@ class _HeronNavigationBarItemWidgetState
               ),
               splashFactory: HeronRipple.splashFactory,
               splashColor:
-                  Theme.of(context).colorScheme.onSurface.withOpacity(0.05),
+              Theme.of(context).colorScheme.onSurface.withOpacity(0.05),
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
               focusColor: Colors.transparent,
               onTap: !widget.isSelected
                   ? () {
-                      widget.onSelected?.call();
-                    }
+                widget.onSelected?.call();
+              }
                   : null,
               child: Center(
                 child: Column(
@@ -216,9 +215,9 @@ class _HeronNavigationBarItemWidgetState
                     Text(
                       widget.item.label,
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            color: itemColor,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        color: itemColor,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),

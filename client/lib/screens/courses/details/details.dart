@@ -118,7 +118,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         onPressed: () {
                           showSignInSheet(context: context);
                         },
-                        child: const Text("Start This Course"),
+                        child: Text(l10n.coursesDetailStart),
                       ),
                     ),
                   ],

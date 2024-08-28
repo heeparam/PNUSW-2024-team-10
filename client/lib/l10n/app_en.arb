@@ -68,6 +68,7 @@
   "coursesDetailMap": "Map",
   "coursesDetailSuggestTime": "Suggested Time",
   "coursesDetailMission": "Mission",
+  "coursesDetailStart": "Start This Course",
 
   "profileCourseCount": "{count} courses finished",
   "@profileCourseCount": {

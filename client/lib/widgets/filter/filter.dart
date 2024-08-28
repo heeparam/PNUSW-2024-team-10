@@ -28,7 +28,8 @@ void showFilterSheet(
         positioning: SnapPositioning.relativeToAvailableSpace,
       ),
       scrollSpec: const ScrollSpec(
-        overscroll: true,
+        overscroll: false,
+        physics: ClampingScrollPhysics(),
       ),
       headerBuilder: (context, sheetState) => Container(
         height: 60.0,

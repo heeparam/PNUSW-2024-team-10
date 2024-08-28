@@ -13,7 +13,7 @@ class MapFilterOverlay extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Positioned(
-      top: topMargin + 8.0,
+      top: topMargin + 16.0,
       left: 16.0,
       right: 16.0,
       bottom: 16.0,

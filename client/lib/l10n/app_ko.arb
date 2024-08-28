@@ -68,6 +68,7 @@
   "coursesDetailMap": "지도",
   "coursesDetailSuggestTime": "진행 시각",
   "coursesDetailMission": "미션",
+  "coursesDetailStart": "코스 시작하기",
 
   "profileCourseCount": "코스 {count}개 완료",
   "profileMissionCount": "미션 {count}개 완료",

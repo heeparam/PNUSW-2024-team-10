@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/services.dart';
 import 'package:heron/widgets/theme/label.dart';
 import 'package:heron/utilities/ripple.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,14 @@ class HeronApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+      ),
+    );
+
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
     return MaterialApp.router(
       title: 'Heron',
       themeMode: ThemeMode.system,
@@ -234,8 +245,10 @@ class MaterialTheme {
     ),
   );
 
-  static ThemeData theme(ColorScheme colorScheme,
-      HeronLabelColors labelColors,) =>
+  static ThemeData theme(
+    ColorScheme colorScheme,
+    HeronLabelColors labelColors,
+  ) =>
       ThemeData(
         fontFamily: "Pretendard",
         useMaterial3: true,
@@ -276,7 +289,7 @@ class MaterialTheme {
         switchTheme: SwitchThemeData(
           trackOutlineWidth: WidgetStateProperty.all(1.0),
           thumbColor: WidgetStateProperty.resolveWith(
-                (states) {
+            (states) {
               if (states.contains(WidgetState.disabled)) {
                 return colorScheme.outlineVariant;
               }
@@ -287,7 +300,7 @@ class MaterialTheme {
             },
           ),
           trackColor: WidgetStateProperty.resolveWith(
-                (states) {
+            (states) {
               if (states.contains(WidgetState.disabled)) {
                 return colorScheme.surfaceContainerHighest;
               }
@@ -298,7 +311,7 @@ class MaterialTheme {
             },
           ),
           trackOutlineColor: WidgetStateProperty.resolveWith(
-                (states) {
+            (states) {
               if (states.contains(WidgetState.disabled)) {
                 return colorScheme.outlineVariant;
               }
