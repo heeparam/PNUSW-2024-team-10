@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { LocaleProvider } from "@/components/locale/locale";
 
 export const metadata: Metadata = {
   title: "Heron",
@@ -91,7 +92,9 @@ export default async function RootLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <LocaleProvider locale={locale as "ko" | "en"}>
+            {children}
+          </LocaleProvider>
         </NextIntlClientProvider>
       </body>
     </html>

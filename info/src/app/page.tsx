@@ -1,6 +1,6 @@
 import { NotionAPI } from "notion-client";
-import styles from "./page.module.css";
 import NotionView from "./notion";
+import { isValidApp } from "@/utilities/isValidApp";
 
 export default async function Home() {
   const collection_id = process.env.COLLECTION_ID;
@@ -8,13 +8,12 @@ export default async function Home() {
     throw new Error("No collection ID provided");
   }
 
+  if (!isValidApp()) {
+    return null;
+  }
+
   const notion = new NotionAPI();
   const infoPage = await notion.getPage(collection_id);
 
-  return (
-    <article className={styles.main}>
-
-      <NotionView recordMap={infoPage} />
-    </article>
-  );
+  return <NotionView recordMap={infoPage} />;
 }

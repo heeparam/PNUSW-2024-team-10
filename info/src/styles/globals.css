@@ -22,7 +22,7 @@
   --color-on-surface: rgb(var(--color-on-surface-rgb));
   --color-on-surface-variant: rgb(var(--color-on-surface-variant-rgb));
   --color-outline: rgb(var(--color-outline-rgb));
-  --color-outline-variant: rgba(var(--color-outline-variant-rgb));
+  --color-outline-variant: rgba(var(--color-outline-variant-rgba));
   --color-primary: rgb(var(--color-primary-rgb));
   --color-primary-container: rgb(var(--color-primary-container-rgb));
   --color-on-primary: rgb(var(--color-on-primary-rgb));
@@ -42,6 +42,8 @@
   color: var(--color-on-surface);
 
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
 }
 
 @media (prefers-color-scheme: dark) {

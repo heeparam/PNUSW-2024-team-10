@@ -1,5 +1,9 @@
+.main {
+  padding-bottom: 80px;
+}
+
 .header {
-  width: var(--notion-max-width);
+  max-width: var(--notion-max-width);
   margin: 0 auto;
   padding: 8px 16px 36px 16px;
 }
@@ -25,8 +29,4 @@
   display: inline-block;
   height: 27.5px;
   padding-top: 4px;
-}
-
-.time {
-  color: var(--color-outline);
 }
