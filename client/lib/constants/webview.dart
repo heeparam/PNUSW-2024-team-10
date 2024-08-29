@@ -1,2 +1,2 @@
-const kInfoBaseUrl = "http://localhost:3000";
+const kInfoBaseUrl = "https://heron-info.vercel.app";
 const kWebViewLoadDuration = Duration(milliseconds: 240);
