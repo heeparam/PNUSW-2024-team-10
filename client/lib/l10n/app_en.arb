@@ -1,4 +1,7 @@
 {
+  "errorTitle": "Error",
+  "errorNotFound": "The requested path was not found.",
+
   "commonConfirmationYes": "Yes",
   "commonConfirmationNo": "No",
 

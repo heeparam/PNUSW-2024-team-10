@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:heron/constants/preferences.dart';
 import 'package:heron/screens/courses/details/details.dart';
+import 'package:heron/screens/error/error.dart';
 import 'package:heron/screens/home.dart';
+import 'package:heron/screens/info/details/details.dart';
 import 'package:heron/screens/profile/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:heron/widgets/restart/restart.dart';
@@ -43,9 +45,21 @@ final _router = GoRouter(
           ),
         ),
         GoRoute(
+          path: "info/:id",
+          builder: (context, state) {
+            final id = state.pathParameters["id"];
+
+            if (id != null) {
+              return InfoDetailsScreen(id);
+            }
+
+            return const ErrorScreen();
+          },
+        ),
+        GoRoute(
           path: "profile/settings",
           builder: (context, state) => const SettingsScreen(),
-        )
+        ),
       ],
     ),
   ],

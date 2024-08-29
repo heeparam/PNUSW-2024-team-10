@@ -1,4 +1,7 @@
 {
+  "errorTitle": "오류",
+  "errorNotFound": "요청 경로가 잘못되었습니다.",
+
   "commonConfirmationYes": "예",
   "commonConfirmationNo": "아니요",
 
